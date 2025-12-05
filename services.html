@@ -82,7 +82,7 @@
 
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
-					<form class="form" id="serviceRequestForm" action="#" method="POST">
+					<form class="form stylized-form" id="serviceRequestForm" action="#" method="POST">
 						
 						<!-- Service Type Selection -->
 						<div class="row mb-4">
@@ -122,30 +122,18 @@
 								<label for="nationality" class="text-black">Nationality *</label>
 								<select name="nationality" id="nationality" class="form-control custom-select" required>
 									<option value="">Select Nationality</option>
-									<option value="NG">Nigeria</option>
-									<option value="US">United States</option>
-									<option value="GB">United Kingdom</option>
-									<option value="GH">Ghana</option>
-									<option value="KE">Kenya</option>
-									<option value="ZA">South Africa</option>
 								</select>
 							</div>
 						</div>
 
 						<!-- Visa Application Fields -->
 						<div id="visaFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Visa Application Details</h4>
+							<h4 class="mb-3 section-subtitle">Visa Application Details</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="visaDestination" class="text-black">Destination Country *</label>
 									<select name="visaDestination" id="visaDestination" class="form-control custom-select">
 										<option value="">Select Destination</option>
-										<option value="AE">United Arab Emirates</option>
-										<option value="GB">United Kingdom</option>
-										<option value="US">United States</option>
-										<option value="CA">Canada</option>
-										<option value="FR">France</option>
-										<option value="DE">Germany</option>
 									</select>
 								</div>
 								<div class="col-md-6 mb-3">
@@ -167,14 +155,14 @@
 								</div>
 								<div class="col-md-6 mb-3">
 									<label for="passportUpload" class="text-black">Upload Passport (Data Page) *</label>
-									<input type="file" class="form-control" id="passportUpload" name="passportUpload" accept="image/*,.pdf">
+									<input type="file" class="form-control file-input" id="passportUpload" name="passportUpload" accept="image/*,.pdf">
 									<small class="form-text text-muted">We'll extract your information automatically</small>
 								</div>
 							</div>
 							<div class="row mb-3">
 								<div class="col-12">
 									<label for="documentsUpload" class="text-black">Upload Additional Documents</label>
-									<input type="file" class="form-control" id="documentsUpload" name="documentsUpload" multiple accept="image/*,.pdf">
+									<input type="file" class="form-control file-input" id="documentsUpload" name="documentsUpload" multiple accept="image/*,.pdf">
 									<small class="form-text text-muted">Bank statements, invitation letters, etc.</small>
 								</div>
 							</div>
@@ -182,7 +170,7 @@
 
 						<!-- Flight Booking Fields -->
 						<div id="flightFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Flight Booking Details</h4>
+							<h4 class="mb-3 section-subtitle">Flight Booking Details</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="departureCity" class="text-black">Departure City *</label>
@@ -223,7 +211,7 @@
 
 						<!-- Hotel Booking Fields -->
 						<div id="hotelFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Hotel Booking Details</h4>
+							<h4 class="mb-3 section-subtitle">Hotel Booking Details</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="hotelLocation" class="text-black">Location/City *</label>
@@ -261,9 +249,9 @@
 							</div>
 						</div>
 
-						<!-- Travel Concierge Fields -->
+						<!-- Travel Concierge Fields - UPDATED WITH CLIENT CHANGES -->
 						<div id="conciergeFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Travel Concierge / Itinerary Planning</h4>
+							<h4 class="mb-3 section-subtitle">Travel Concierge / Itinerary Planning</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="tripDestination" class="text-black">Destination(s) *</label>
@@ -284,29 +272,76 @@
 									<input type="number" class="form-control" id="travelersCount" name="travelersCount" min="1" value="1">
 								</div>
 							</div>
+							
+							<!-- NEW: Travel Type Checkboxes -->
 							<div class="row mb-3">
 								<div class="col-12">
-									<label for="interests" class="text-black">Interests & Preferences</label>
-									<textarea class="form-control" id="interests" name="interests" rows="3" placeholder="Adventure, culture, relaxation, food tours, etc."></textarea>
+									<label class="text-black d-block mb-2">Travel Type(s) *</label>
+									<div class="custom-checkbox-group">
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="adventure">
+											<span class="checkmark"></span>
+											<span class="label-text">Adventure</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="cultural">
+											<span class="checkmark"></span>
+											<span class="label-text">Cultural</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="relaxation">
+											<span class="checkmark"></span>
+											<span class="label-text">Relaxation</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="food-tours">
+											<span class="checkmark"></span>
+											<span class="label-text">Food Tours</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="beach">
+											<span class="checkmark"></span>
+											<span class="label-text">Beach</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="wildlife">
+											<span class="checkmark"></span>
+											<span class="label-text">Wildlife</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="luxury">
+											<span class="checkmark"></span>
+											<span class="label-text">Luxury</span>
+										</label>
+										<label class="custom-checkbox">
+											<input type="checkbox" name="travelTypes[]" value="budget">
+											<span class="checkmark"></span>
+											<span class="label-text">Budget</span>
+										</label>
+									</div>
 								</div>
 							</div>
+
 							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="budget" class="text-black">Budget Range</label>
-									<select name="budget" id="budget" class="form-control custom-select">
-										<option value="">Select Budget</option>
-										<option value="budget">Budget-friendly</option>
-										<option value="moderate">Moderate</option>
-										<option value="luxury">Luxury</option>
-										<option value="ultra-luxury">Ultra Luxury</option>
-									</select>
+								<div class="col-12">
+									<label for="interests" class="text-black">Additional Interests & Preferences</label>
+									<textarea class="form-control" id="interests" name="interests" rows="3" placeholder="Tell us more about what you'd like to experience..."></textarea>
+								</div>
+							</div>
+							
+							<!-- UPDATED: Budget as Text Area -->
+							<div class="row mb-3">
+								<div class="col-12">
+									<label for="budget" class="text-black">Budget Information</label>
+									<textarea class="form-control" id="budget" name="budget" rows="2" placeholder="Please share your budget range or constraints..."></textarea>
+									<small class="form-text text-muted">This helps us tailor our recommendations to your needs</small>
 								</div>
 							</div>
 						</div>
 
 						<!-- Corporate Travel Fields -->
 						<div id="corporateFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Corporate & Group Travel</h4>
+							<h4 class="mb-3 section-subtitle">Corporate & Group Travel</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="companyName" class="text-black">Company Name *</label>
@@ -337,7 +372,7 @@
 
 						<!-- Consultation Fields -->
 						<div id="consultationFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Travel Consultation</h4>
+							<h4 class="mb-3 section-subtitle">Travel Consultation</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<label for="consultationType" class="text-black">Consultation Type *</label>
@@ -364,7 +399,7 @@
 
 						<!-- Package Fields -->
 						<div id="packageFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3">Travel Package Request</h4>
+							<h4 class="mb-3 section-subtitle">Travel Package Request</h4>
 							<div class="row mb-3">
 								<div class="col-12">
 									<label for="packageName" class="text-black">Package Name (if specific)</label>
@@ -551,88 +586,8 @@
 	<script src="js/typed.js"></script>
 	<script src="js/custom.js"></script>
 
-	<!-- Dynamic Form Script -->
-	<script>
-		// Handle service type change
-		document.getElementById('serviceType').addEventListener('change', function() {
-			const serviceType = this.value;
-			
-			// Hide all service-specific fields
-			const allServiceFields = document.querySelectorAll('.service-fields');
-			allServiceFields.forEach(field => {
-				field.style.display = 'none';
-				// Remove required attribute from hidden fields
-				const inputs = field.querySelectorAll('input, select, textarea');
-				inputs.forEach(input => input.removeAttribute('required'));
-			});
-			
-			// Show selected service fields
-			if (serviceType) {
-				const selectedFields = document.getElementById(serviceType + 'Fields');
-				if (selectedFields) {
-					selectedFields.style.display = 'block';
-					// Add required attribute to visible fields that need it
-					const requiredInputs = selectedFields.querySelectorAll('input[type="text"]:not([id*="preference"]):not([id*="Upload"]), select:not([id*="preference"]), input[type="date"], input[type="number"]');
-					requiredInputs.forEach(input => {
-						if (!input.id.includes('return') && !input.id.includes('Additional') && !input.id.includes('preference')) {
-							input.setAttribute('required', 'required');
-						}
-					});
-				}
-			}
-		});
-
-		// Check for URL parameters (pre-select service from other pages)
-		window.addEventListener('DOMContentLoaded', function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const service = urlParams.get('service');
-			const nationality = urlParams.get('nationality');
-			const destination = urlParams.get('destination');
-			
-			if (service) {
-				document.getElementById('serviceType').value = service;
-				document.getElementById('serviceType').dispatchEvent(new Event('change'));
-			}
-			
-			if (nationality) {
-				document.getElementById('nationality').value = nationality;
-			}
-			
-			if (destination && service === 'visa') {
-				document.getElementById('visaDestination').value = destination;
-			}
-
-			// Auto-scroll to form
-			if (service) {
-				document.getElementById('serviceRequestForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
-			}
-		});
-
-		// Handle form submission
-		document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			// In production, send this to your backend
-			const formData = new FormData(this);
-			
-			// Show success message
-			alert('Thank you for your request! We will contact you shortly via email or phone.');
-			
-			// Reset form
-			this.reset();
-			document.querySelectorAll('.service-fields').forEach(field => {
-				field.style.display = 'none';
-			});
-		});
-
-		// Simple OCR simulation for passport upload (replace with actual OCR in production)
-		document.getElementById('passportUpload')?.addEventListener('change', function(e) {
-			if (this.files && this.files[0]) {
-				// In production, send to OCR service
-				alert('Passport uploaded successfully! We will extract your information.');
-			}
-		});
-	</script>
+	<!-- API Integration -->
+	<script src="js/njeyali-api.js"></script>
 
 	<style>
 		.whatsapp-float {
@@ -660,15 +615,170 @@
 			transform: scale(1.1);
 		}
 
-		.service-fields {
-			border-top: 2px solid #e9ecef;
-			padding-top: 20px;
-			margin-top: 20px;
+		/* Enhanced Form Styling */
+		.stylized-form {
+			background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+			padding: 40px;
+			border-radius: 20px;
+			box-shadow: 0 10px 40px rgba(26, 55, 77, 0.1);
 		}
 
-		.service-fields h4 {
+		.stylized-form .form-control,
+		.stylized-form .custom-select {
+			border: 2px solid #e3e8ef;
+			border-radius: 10px;
+			padding: 12px 20px;
+			font-size: 15px;
+			transition: all 0.3s ease;
+			background-color: #ffffff;
+		}
+
+		.stylized-form .form-control:focus,
+		.stylized-form .custom-select:focus {
+			border-color: #1A374D;
+			box-shadow: 0 0 0 0.2rem rgba(26, 55, 77, 0.15);
+			transform: translateY(-2px);
+		}
+
+		.stylized-form label {
+			font-weight: 600;
+			margin-bottom: 8px;
+			color: #1A374D;
+			font-size: 14px;
+		}
+
+		.stylized-form .file-input {
+			padding: 10px;
+			cursor: pointer;
+		}
+
+		.service-fields {
+			border-top: 3px solid #1A374D;
+			padding-top: 30px;
+			margin-top: 30px;
+			background: rgba(26, 55, 77, 0.03);
+			border-radius: 15px;
+			padding: 30px 20px;
+		}
+
+		.section-subtitle {
 			color: #1A374D;
 			font-weight: 700;
+			font-size: 1.3rem;
+			position: relative;
+			padding-left: 20px;
+		}
+
+		.section-subtitle:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 4px;
+			height: 24px;
+			background: #1A374D;
+			border-radius: 2px;
+		}
+
+		/* Custom Checkbox Styling */
+		.custom-checkbox-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+		}
+
+		.custom-checkbox {
+			display: inline-flex;
+			align-items: center;
+			cursor: pointer;
+			padding: 10px 20px;
+			background: #ffffff;
+			border: 2px solid #e3e8ef;
+			border-radius: 25px;
+			transition: all 0.3s ease;
+			position: relative;
+		}
+
+		.custom-checkbox:hover {
+			border-color: #1A374D;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(26, 55, 77, 0.1);
+		}
+
+		.custom-checkbox input[type="checkbox"] {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		.custom-checkbox .checkmark {
+			width: 20px;
+			height: 20px;
+			border: 2px solid #1A374D;
+			border-radius: 4px;
+			margin-right: 10px;
+			position: relative;
+			transition: all 0.3s ease;
+		}
+
+		.custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
+			background-color: #1A374D;
+			border-color: #1A374D;
+		}
+
+		.custom-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+			content: "✓";
+			position: absolute;
+			color: white;
+			font-size: 14px;
+			font-weight: bold;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.custom-checkbox input[type="checkbox"]:checked ~ .label-text {
+			color: #1A374D;
+			font-weight: 600;
+		}
+
+		.custom-checkbox .label-text {
+			font-size: 14px;
+			color: #495057;
+			transition: all 0.3s ease;
+		}
+
+		/* Button Styling */
+		.stylized-form .btn-primary {
+			padding: 15px 50px;
+			font-size: 16px;
+			font-weight: 600;
+			border-radius: 30px;
+			box-shadow: 0 4px 15px rgba(26, 55, 77, 0.3);
+			transition: all 0.3s ease;
+		}
+
+		.stylized-form .btn-primary:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 20px rgba(26, 55, 77, 0.4);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.stylized-form {
+				padding: 25px;
+			}
+
+			.custom-checkbox {
+				padding: 8px 15px;
+				font-size: 13px;
+			}
+
+			.custom-checkbox .checkmark {
+				width: 18px;
+				height: 18px;
+			}
 		}
 	</style>
 

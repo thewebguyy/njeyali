@@ -106,39 +106,18 @@
 								<label for="nationality" class="text-black">Nationality</label>
 								<select name="nationality" id="nationality" class="form-control custom-select" required>
 									<option value="">Select Nationality</option>
-									<option value="NG">Nigeria</option>
-									<option value="US">United States</option>
-									<option value="GB">United Kingdom</option>
-									<option value="GH">Ghana</option>
-									<option value="KE">Kenya</option>
-									<option value="ZA">South Africa</option>
-									<!-- Add more countries -->
 								</select>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="residency" class="text-black">Residency</label>
 								<select name="residency" id="residency" class="form-control custom-select" required>
 									<option value="">Select Residency</option>
-									<option value="NG">Nigeria</option>
-									<option value="US">United States</option>
-									<option value="GB">United Kingdom</option>
-									<option value="GH">Ghana</option>
-									<option value="KE">Kenya</option>
-									<option value="ZA">South Africa</option>
-									<!-- Add more countries -->
 								</select>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="destination" class="text-black">Destination</label>
 								<select name="destination" id="destination" class="form-control custom-select" required>
 									<option value="">Select Destination</option>
-									<option value="AE">United Arab Emirates</option>
-									<option value="GB">United Kingdom</option>
-									<option value="US">United States</option>
-									<option value="CA">Canada</option>
-									<option value="FR">France</option>
-									<option value="DE">Germany</option>
-									<!-- Add more countries -->
 								</select>
 							</div>
 						</div>
@@ -487,67 +466,8 @@
 	<script src="js/typed.js"></script>
 	<script src="js/custom.js"></script>
 
-	<!-- Visa Checker Script -->
-	<script>
-		// Simple visa requirements database (expand this in production)
-		const visaRequirements = {
-			'NG-AE': { required: true, type: 'Tourist Visa' },
-			'NG-GB': { required: true, type: 'UK Visa' },
-			'NG-US': { required: true, type: 'US Visa' },
-			'NG-CA': { required: true, type: 'Canadian Visa' },
-			'US-NG': { required: true, type: 'Nigerian Visa' },
-			'GB-NG': { required: false, type: 'Visa on Arrival' },
-			// Add more combinations
-		};
-
-		document.getElementById('visaCheckerForm').addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			const nationality = document.getElementById('nationality').value;
-			const destination = document.getElementById('destination').value;
-			const key = `${nationality}-${destination}`;
-			
-			const result = visaRequirements[key];
-			const resultDiv = document.getElementById('visaResult');
-			const resultTitle = document.getElementById('resultTitle');
-			const resultMessage = document.getElementById('resultMessage');
-			const resultActions = document.getElementById('resultActions');
-			
-			resultDiv.style.display = 'block';
-			
-			if (result && result.required) {
-				resultDiv.className = 'alert alert-warning mt-4';
-				resultTitle.textContent = 'Visa Required';
-				resultMessage.textContent = `You need a ${result.type} to travel to your destination.`;
-				resultActions.innerHTML = `
-					<a href="services.html?service=visa&nationality=${nationality}&destination=${destination}" class="btn btn-primary">
-						Apply for Visa Now
-					</a>
-				`;
-			} else if (result && !result.required) {
-				resultDiv.className = 'alert alert-success mt-4';
-				resultTitle.textContent = 'No Visa Required';
-				resultMessage.textContent = 'Great news! You can travel without a visa or get visa on arrival.';
-				resultActions.innerHTML = `
-					<a href="services.html?service=concierge" class="btn btn-primary">
-						Plan Your Trip
-					</a>
-				`;
-			} else {
-				resultDiv.className = 'alert alert-info mt-4';
-				resultTitle.textContent = 'Information Not Available';
-				resultMessage.textContent = 'We don\'t have specific information for this combination. Contact us for assistance.';
-				resultActions.innerHTML = `
-					<a href="contact.html" class="btn btn-primary">
-						Contact Us
-					</a>
-				`;
-			}
-			
-			// Scroll to result
-			resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-		});
-	</script>
+	<!-- API Integration -->
+	<script src="js/njeyali-api.js"></script>
 
 	<style>
 		/* WhatsApp Float Button */

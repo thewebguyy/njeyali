@@ -1,0 +1,270 @@
+/* 
+ * Njeyali Travel - Custom Brand Colors
+ * Update the $primary variable to match your logo's blue shade
+ * Place this file in css/ folder and link it AFTER style.css
+ */
+
+/* 
+ * OPTION 1: If logo is a lighter/brighter blue like #0066CC or #2E5BFF
+ * Uncomment this section:
+ */
+/*
+:root {
+    --brand-primary: #0066CC;
+    --brand-secondary: #6998AB;
+    --brand-primary-light: #3385D6;
+    --brand-primary-dark: #004C99;
+}
+*/
+
+/* 
+ * OPTION 2: If logo is a deeper blue like #003D7A or #004080
+ * Uncomment this section:
+ */
+:root {
+    --brand-primary: #004080;
+    --brand-secondary: #6998AB;
+    --brand-primary-light: #0059B3;
+    --brand-primary-dark: #002D5C;
+}
+
+/* 
+ * OPTION 3: If logo is a navy/dark blue like #001F3F or #002B5C
+ * Uncomment this section:
+ */
+/*
+:root {
+    --brand-primary: #002B5C;
+    --brand-secondary: #6998AB;
+    --brand-primary-light: #003D7A;
+    --brand-primary-dark: #001A40;
+}
+*/
+
+/* Apply brand colors throughout the site */
+.text-primary,
+a.text-primary {
+    color: var(--brand-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--brand-primary) !important;
+}
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--brand-primary-light);
+    border-color: var(--brand-primary-light);
+}
+
+.btn-primary:active {
+    background-color: var(--brand-primary-dark);
+    border-color: var(--brand-primary-dark);
+}
+
+/* Hero section background */
+.hero {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+}
+
+.hero.hero-inner {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+}
+
+/* Section titles */
+.section-title:before {
+    background: var(--brand-primary);
+}
+
+/* Icons and decorative elements */
+.icon-paper-plane,
+.icon-airplane,
+.icon-user,
+.icon-briefcase,
+.icon-support,
+.flaticon-passport,
+.flaticon-airplane,
+.flaticon-house,
+.flaticon-travel {
+    color: var(--brand-primary);
+}
+
+/* Links */
+a {
+    color: var(--brand-primary);
+}
+
+a:hover,
+a:focus {
+    color: var(--brand-primary-dark);
+}
+
+/* Form elements */
+.form-control:focus,
+.custom-select:focus {
+    border-color: var(--brand-primary);
+}
+
+/* Custom checkboxes */
+.custom-checkbox .checkmark {
+    border-color: var(--brand-primary);
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ .label-text {
+    color: var(--brand-primary);
+}
+
+.custom-checkbox:hover {
+    border-color: var(--brand-primary);
+}
+
+/* Service fields accent */
+.service-fields {
+    border-top-color: var(--brand-primary);
+    background: rgba(0, 64, 128, 0.03); /* Adjust based on your blue */
+}
+
+.section-subtitle:before {
+    background: var(--brand-primary);
+}
+
+.section-subtitle {
+    color: var(--brand-primary);
+}
+
+/* CTA section */
+.cta-section {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+}
+
+/* Social icons */
+.site-footer .widget .social li a {
+    background: var(--brand-primary);
+}
+
+.site-footer .widget .social li a:hover {
+    background: var(--brand-primary-light);
+}
+
+/* Media cards */
+.media-1 .price {
+    color: var(--brand-primary);
+}
+
+/* Features */
+.feature-1 {
+    background: rgba(0, 64, 128, 0.05); /* Adjust based on your blue */
+}
+
+.display-4.text-primary {
+    color: var(--brand-primary) !important;
+}
+
+/* Loading spinner */
+.spinner-border {
+    color: var(--brand-primary);
+}
+
+/* Logo text */
+.logo .text-primary {
+    color: var(--brand-primary) !important;
+}
+
+/* Navigation */
+.site-nav .site-menu > li.active > a {
+    color: #fff;
+}
+
+.site-nav .site-menu > li > a:hover {
+    color: var(--brand-primary-light);
+}
+
+/* Alert boxes (visa results) */
+.alert-warning {
+    background-color: rgba(0, 64, 128, 0.1);
+    border-color: var(--brand-primary);
+}
+
+.alert-success {
+    background-color: rgba(0, 128, 0, 0.1);
+    border-color: #28a745;
+}
+
+.alert-info {
+    background-color: rgba(0, 64, 128, 0.05);
+    border-color: var(--brand-primary-light);
+}
+
+/* Hero image overlay */
+.hero .slides {
+    box-shadow: 0 25px 50px -10px rgba(0, 64, 128, 0.4);
+}
+
+/* Form styling */
+.stylized-form {
+    box-shadow: 0 10px 40px rgba(0, 64, 128, 0.1);
+}
+
+.stylized-form .form-control:focus,
+.stylized-form .custom-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 64, 128, 0.15);
+}
+
+.stylized-form .btn-primary {
+    box-shadow: 0 4px 15px rgba(0, 64, 128, 0.3);
+}
+
+.stylized-form .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 64, 128, 0.4);
+}
+
+.custom-checkbox:hover {
+    box-shadow: 0 4px 12px rgba(0, 64, 128, 0.1);
+}
+
+/* Video play button */
+.video-play-button:after {
+    background: var(--brand-primary);
+}
+
+.video-play-button:before {
+    background: var(--brand-primary-light);
+}
+
+.video-play-button:hover:after {
+    background-color: var(--brand-primary-light);
+}
+
+/* Testimonials */
+.owl-dots .owl-dot.active span {
+    background: var(--brand-primary);
+}
+
+/* Service hover */
+.service:hover {
+    background-color: rgba(0, 64, 128, 0.05);
+}
+
+/*
+ * INSTRUCTIONS FOR USE:
+ * 
+ * 1. Once you receive the logo, identify the exact blue color
+ * 2. Use a color picker tool or ask your designer for the HEX code
+ * 3. Update the --brand-primary value in ONE of the options above
+ * 4. Uncomment that option (remove the surrounding comment marks)
+ * 5. Save this file as "css/brand-colors.css"
+ * 6. Add this line to both index.html and services.html AFTER style.css:
+ *    <link rel="stylesheet" href="css/brand-colors.css">
+ * 
+ * The colors will automatically apply site-wide!
+ */
