@@ -1,298 +1,726 @@
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Njeyali Travel - Get in touch for visa assistance, travel planning, and booking services">
+    <title>Contact Us - Njeyali Travel</title>
 
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-  <link rel="stylesheet" href="css/daterangepicker.css">
-  <link rel="stylesheet" href="css/aos.css">
-  <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/brand-colors.css">
+    <link rel="stylesheet" href="css/njeyali-api-ui.css">
+
+    <style>
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, #1A374D 0%, #2E5266 100%);
+            color: white;
+            padding: 80px 0 60px;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-container h2 {
+            color: #1A374D;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #1A374D;
+            box-shadow: 0 0 0 0.2rem rgba(26, 55, 77, 0.15);
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .btn-submit {
+            background: #1A374D;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #2E5266;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .contact-info-card .icon {
+            width: 80px;
+            height: 80px;
+            background: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #1A374D;
+        }
+
+        .contact-info-card h4 {
+            font-weight: 700;
+            color: #1A374D;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-card p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .contact-info-card a {
+            color: #1A374D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-info-card a:hover {
+            color: #2E5266;
+            text-decoration: none;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Business Hours */
+        .business-hours {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .business-hours h4 {
+            font-weight: 700;
+            color: #1A374D;
+            margin-bottom: 20px;
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hours-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .time {
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-section h2 {
+            color: #1A374D;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #1A374D;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background: #20BA5A;
+            color: white;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+
+            .contact-info-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-
-  <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div>
-
-  <nav class="site-nav">
-    <div class="container">
-      <div class="site-navigation">
-        <a href="index.html" class="logo m-0">Tour <span class="text-primary">.</span></a>
-
-        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li class="has-children">
-            <a href="#">Dropdown</a>
-            <ul class="dropdown">
-              <li><a href="elements.html">Elements</a></li>
-              <li><a href="#">Menu One</a></li>
-              <li class="has-children">
-                <a href="#">Menu Two</a>
-                <ul class="dropdown">
-                  <li><a href="#">Sub Menu One</a></li>
-                  <li><a href="#">Sub Menu Two</a></li>
-                  <li><a href="#">Sub Menu Three</a></li>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong style="font-size: 1.5rem; color: #1A374D;">Njeyali Travel</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
                 </ul>
-              </li>
-              <li><a href="#">Menu Three</a></li>
-            </ul>
-          </li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="active"><a href="contact.html">Contact Us</a></li>
-        </ul>
-
-        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-          <span></span>
-        </a>
-
-      </div>
-    </div>
-  </nav>
-
-
-  <div class="hero hero-inner">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mx-auto text-center">
-          <div class="intro-wrap">
-            <h1 class="mb-0">Contact Us</h1>
-            <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  
-  
-  <div class="untree_co-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
             <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                  <label class="text-black" for="fname">First name</label>
-                  <input type="text" class="form-control" id="fname">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Get In Touch</h1>
+                    <p class="lead">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
                 </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label class="text-black" for="lname">Last name</label>
-                  <input type="text" class="form-control" id="lname">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Us</h4>
+                        <p>Lagos, Nigeria</p>
+                        <p class="text-muted">Head Office</p>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="text-black" for="email">Email address</label>
-              <input type="email" class="form-control" id="email">
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p><a href="tel:+234XXXXXXXXX">+234 XXX XXX XXXX</a></p>
+                        <p class="text-muted">Mon-Fri 9am-6pm</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:info@njeyalitravel.com">info@njeyalitravel.com</a></p>
+                        <p class="text-muted">24/7 Support</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-              <label class="text-black" for="message">Message</label>
-              <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
-            </div>
+            <!-- Contact Form & Business Hours -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form-container">
+                        <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                        <p class="text-muted mb-4">Fill out the form below and we'll get back to you within 24 hours</p>
 
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="required-field">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="required-field">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="required-field">Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="required-field">Phone Number</label>
+                                        <input type="tel" class="form-control" name="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required-field">Subject</label>
+                                <select class="form-control" name="subject" required>
+                                    <option value="">Select a subject...</option>
+                                    <option value="Visa Inquiry">Visa Inquiry</option>
+                                    <option value="Flight Booking">Flight Booking</option>
+                                    <option value="Hotel Booking">Hotel Booking</option>
+                                    <option value="Package Information">Package Information</option>
+                                    <option value="Corporate Travel">Corporate Travel</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Feedback">Feedback</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required-field">Message</label>
+                                <textarea class="form-control" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Business Hours -->
+                    <div class="business-hours mb-4">
+                        <h4><i class="fas fa-clock"></i> Business Hours</h4>
+                        <ul class="hours-list">
+                            <li>
+                                <span class="day">Monday</span>
+                                <span class="time">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Tuesday</span>
+                                <span class="time">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Wednesday</span>
+                                <span class="time">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Thursday</span>
+                                <span class="time">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Friday</span>
+                                <span class="time">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Saturday</span>
+                                <span class="time">10:00 AM - 4:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Sunday</span>
+                                <span class="time" style="color: #dc3545;">Closed</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="business-hours">
+                        <h4><i class="fas fa-share-alt"></i> Follow Us</h4>
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-outline-primary m-2" style="width: 45px; height: 45px; padding: 10px; border-radius: 50%;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger m-2" style="width: 45px; height: 45px; padding: 10px; border-radius: 50%;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info m-2" style="width: 45px; height: 45px; padding: 10px; border-radius: 50%;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary m-2" style="width: 45px; height: 45px; padding: 10px; border-radius: 50%;">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <p class="text-center text-muted mt-3">Stay connected with us on social media</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5 ml-auto">
-          <div class="quick-contact-item d-flex align-items-center mb-4">
-            <span class="flaticon-house"></span>
-            <address class="text">
-              155 Market St #101, Paterson, NJ 07505, United States
-            </address>
-          </div>
-          <div class="quick-contact-item d-flex align-items-center mb-4">
-            <span class="flaticon-phone-call"></span>
-            <address class="text">
-              +1 202 2020 200
-            </address>
-          </div>
-          <div class="quick-contact-item d-flex align-items-center mb-4">
-            <span class="flaticon-mail"></span>
-            <address class="text">
-              @info@mydomain.com
-            </address>
-          </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #1A374D; font-weight: 700;">Find Us On The Map</h2>
+            <div class="map-container">
+                <!-- Replace with your actual Google Maps embed -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7276214347846!2d3.3792057!3d6.4280553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1234567890123" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>How long does visa processing take?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Visa processing times vary by country and visa type. Tourist visas typically take 5-15 business days, while work and student visas may take 4-8 weeks. We'll provide you with specific timelines for your destination.
+                        </div>
+                    </div>
 
-  <div class="untree_co-section testimonial-section mt-5 bg-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-7 text-center">
-          <h2 class="section-title text-center mb-5">Testimonials</h2>
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>What documents do I need for a visa application?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Basic requirements include a valid passport, passport photos, completed application form, and proof of financial means. Additional documents may be required depending on visa type and destination. We'll provide you with a comprehensive checklist.
+                        </div>
+                    </div>
 
-          <div class="owl-single owl-carousel no-nav">
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Adam Aderson</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Can you help with flight changes or cancellations?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! We provide full support for flight changes, cancellations, and rebooking. Contact us as soon as possible, and we'll work with the airline to find the best solution based on your ticket's terms and conditions.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Do you offer travel insurance?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We partner with leading insurance providers to offer comprehensive travel insurance. Coverage includes medical emergencies, trip cancellations, lost luggage, and more. We recommend insurance for all international travel.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We accept bank transfers, credit/debit cards, and mobile money payments. Payment plans are available for packages and corporate bookings. Contact us to discuss payment options that work best for you.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>Can I customize a travel package?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! All our packages can be customized to match your preferences, budget, and travel style. Our concierge team will work with you to create your perfect itinerary.
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Lukas Devlin</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-            </div>
-
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="images/person_4.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Kayla Bryant</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-            </div>
-
-          </div>
-
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-
-  <div class="site-footer">
-    <div class="inner first">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">About Tour</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Njeyali Travel</h5>
+                    <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences around the world.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white">Home</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-white">Services</a></li>
+                        <li class="mb-2"><a href="packages.html" class="text-white">Packages</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-envelope"></i> info@njeyalitravel.com</li>
+                        <li class="mb-2"><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
             </div>
-            <div class="widget">
-              <ul class="list-unstyled social">
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                <li><a href="#"><span class="icon-apple"></span></a></li>
-                <li><a href="#"><span class="icon-google"></span></a></li>
-              </ul>
+            <hr class="bg-white my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Njeyali Travel. All rights reserved.</p>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-2 pl-lg-5">
-            <div class="widget">
-              <h3 class="heading">Pages</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget">
-              <h3 class="heading">Resources</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">Contact</h3>
-              <ul class="list-unstyled quick-info links">
-                <li class="email"><a href="#">mail@example.com</a></li>
-                <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
+    </footer>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Njeyali API -->
+    <script src="js/njeyali-api.js"></script>
 
-    <div class="inner dark">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ --> Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Contact Form Handler -->
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+        }
 
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            try {
+                const formData = new FormData(this);
+                const data = {
+                    name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+                
+                const result = await NjeyaliAPI.contact.submitContactForm(data);
+                
+                if (result.success) {
+                    NjeyaliAPI.utils.showToast(
+                        'Thank you for contacting us! We\'ll respond within 24 hours.',
+                        'success'
+                    );
+                    
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        alert('Message sent successfully!\n\nWe\'ve received your inquiry and will get back to you shortly via email.');
+                    }, 1000);
+                } else {
+                    NjeyaliAPI.utils.showToast(
+                        result.error || 'Failed to send message. Please try again.',
+                        'error'
+                    );
+                }
+            } catch (error) {
+                console.error('Contact form error:', error);
+                NjeyaliAPI.utils.showToast(
+                    'An error occurred. Please try again or contact us directly.',
+                    'error'
+                );
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        });
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/moment.min.js"></script>
-  <script src="js/daterangepicker.js"></script>
-
-  <script src="js/typed.js"></script>
-  
-  <script src="js/custom.js"></script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
-
 </html>

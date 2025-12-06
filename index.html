@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Njeyali Travel - Your trusted partner for visa assistance, flight booking, hotel reservations, and curated travel experiences worldwide">
-    <meta name="keywords" content="travel agency, visa assistance, flight booking, hotel booking, travel concierge, Dubai packages, safari tours">
+    <meta name="description" content="Njeyali Travel - Your trusted partner for visa assistance, travel planning, and booking services">
     <title>Njeyali Travel - Premium Travel & Visa Services</title>
 
     <!-- Favicon -->
@@ -22,20 +21,71 @@
     <link rel="stylesheet" href="css/njeyali-api-ui.css">
 
     <style>
-        /* Hero Section */
+        /* Brand Colors from Logo */
+        :root {
+            --primary-blue: #2B7BB8;
+            --light-blue: #5BA4D8;
+            --orange: #FF8C00;
+            --yellow: #FFB800;
+            --dark-text: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        /* Hero Section with Vibrant Logo Colors */
         .hero-section {
-            background: linear-gradient(135deg, rgba(26, 55, 77, 0.95), rgba(46, 82, 102, 0.95)), 
-                        url('images/hero-bg.jpg') center/cover;
+            background: linear-gradient(135deg, #2B7EBF 0%, #4A9DD9 40%, #FFA500 100%);
             color: white;
-            padding: 100px 0 80px;
+            padding: 120px 0 100px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), rgba(255, 165, 0, 0.2));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.25), rgba(255, 140, 0, 0.15));
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .hero-section h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-section .lead {
@@ -44,445 +94,268 @@
             opacity: 0.95;
         }
 
-        .hero-cta {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-cta .btn {
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
         .btn-primary {
-            background: #1A374D;
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
             border: none;
+            color: white;
+            font-weight: 600;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
         }
 
         .btn-primary:hover {
-            background: #2E5266;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.6);
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 13px 40px;
+            border-radius: 50px;
         }
 
         .btn-outline-light:hover {
             background: white;
-            color: #1A374D;
-            transform: translateY(-2px);
+            color: var(--primary-blue);
         }
 
-        /* Visa Checker Section */
+        /* Navigation with colors */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand strong {
+            background: linear-gradient(135deg, #2B7EBF, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--dark-text) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        .nav-item.active .nav-link {
+            color: var(--primary-blue) !important;
+            font-weight: 600;
+        }
+
+        /* Visa Checker Section with Orange Accent */
         .visa-checker-section {
-            background: white;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E1 100%);
             padding: 60px 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
         }
 
         .visa-checker-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(43, 126, 191, 0.15);
+            border-top: 5px solid #FFA500;
         }
 
         .visa-checker-card h2 {
-            color: #1A374D;
-            margin-bottom: 30px;
-            font-weight: 700;
+            color: #2B7EBF;
+            margin-bottom: 10px;
         }
 
-        .form-group label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
+        .visa-checker-card h2 i {
+            color: #FFA500;
         }
 
-        .form-control {
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 2px solid #ddd;
-            transition: all 0.3s;
-        }
-
-        .form-control:focus {
-            border-color: #1A374D;
-            box-shadow: 0 0 0 0.2rem rgba(26, 55, 77, 0.15);
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1A374D;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .about-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
+        /* Stats Section with Colorful Boxes */
         .stat-box {
-            text-align: center;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #2B7EBF 0%, #4A9DD9 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 35px;
             margin-bottom: 20px;
             transition: all 0.3s;
+            border: none;
+        }
+
+        .stat-box:nth-child(2) {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+        }
+
+        .stat-box:nth-child(3) {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8787 100%);
+        }
+
+        .stat-box:nth-child(4) {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
         }
 
         .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            color: #1A374D;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .stat-label {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        /* Services Section */
+        /* Service Cards with Colorful Icons */
         .services-section {
             padding: 80px 0;
-            background: #f8f9fa;
+            background: var(--light-bg);
         }
 
         .service-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             padding: 40px 30px;
-            text-align: center;
+            border-top: 4px solid #2B7EBF;
             transition: all 0.3s;
-            height: 100%;
-            border: 2px solid transparent;
         }
 
         .service-card:hover {
-            border-color: #1A374D;
+            border-top-color: #FFA500;
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .service-icon {
-            font-size: 3.5rem;
-            color: #1A374D;
-            margin-bottom: 20px;
-        }
-
-        .service-card h4 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .service-card .btn {
-            padding: 10px 25px;
-            font-weight: 600;
-        }
-
-        /* Packages Section */
-        .packages-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .package-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            height: 100%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2B7EBF 0%, #4A9DD9 100%);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(43, 126, 191, 0.3);
         }
 
-        .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+            box-shadow: 0 8px 20px rgba(255, 165, 0, 0.3);
         }
 
-        .package-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8787 100%);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
         }
 
-        .package-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
+        .service-card:nth-child(4) .service-icon {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
         }
 
-        .package-card:hover .package-image img {
-            transform: scale(1.1);
+        .service-card:nth-child(5) .service-icon {
+            background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
         }
 
+        .service-card:nth-child(6) .service-icon {
+            background: linear-gradient(135deg, #00ACC1 0%, #26C6DA 100%);
+            box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
+        }
+
+        /* Package Cards with Vibrant Badges */
         .package-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #FFD93D;
-            color: #333;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
             font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .package-content {
-            padding: 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .package-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .package-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .package-meta i {
-            color: #1A374D;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
         }
 
         .package-price {
-            font-size: 1.8rem;
+            color: #2B7EBF;
+            font-size: 2rem;
             font-weight: 700;
-            color: #1A374D;
-            margin-top: auto;
-            margin-bottom: 15px;
         }
 
-        .package-price small {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 400;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            height: 100%;
-            position: relative;
-        }
-
-        .testimonial-quote {
-            font-size: 3rem;
-            color: #1A374D;
-            opacity: 0.2;
-            position: absolute;
-            top: 20px;
-            left: 30px;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 25px;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #1A374D;
+        .btn-view-package {
+            background: linear-gradient(135deg, #2B7EBF 0%, #4A9DD9 100%);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            border-radius: 10px;
         }
 
-        .author-info h5 {
-            margin: 0;
-            font-weight: 600;
-            color: #333;
+        .btn-view-package:hover {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+            color: white;
         }
 
-        .author-info p {
-            margin: 0;
-            color: #666;
-            font-size: 0.9rem;
+        /* Testimonials with Colored Avatars */
+        .author-avatar {
+            background: linear-gradient(135deg, #2B7EBF 0%, #4A9DD9 100%);
         }
 
         .rating {
-            color: #FFD93D;
-            margin-top: 5px;
+            color: var(--yellow);
         }
 
-        /* CTA Section */
+        /* CTA Section with Vibrant Gradient */
         .cta-section {
-            background: linear-gradient(135deg, #1A374D, #2E5266);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--orange) 100%);
             color: white;
-            padding: 80px 0;
-            text-align: center;
+            padding: 100px 0;
         }
 
-        .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+        /* Section Titles with Color */
+        .section-title {
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 20px;
         }
 
-        .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--yellow));
+            border-radius: 2px;
         }
 
-        /* WhatsApp Float Button */
+        .section-subtitle {
+            color: #666;
+        }
+
+        /* WhatsApp Button with Orange */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: all 0.3s;
+            background: var(--orange);
         }
 
         .whatsapp-float:hover {
-            background: #20BA5A;
-            color: white;
-            transform: scale(1.1);
-            text-decoration: none;
+            background: var(--yellow);
         }
 
-        /* Footer */
+        /* Footer with Blue */
         footer {
-            background: #1A374D;
-            color: white;
-            padding: 50px 0 20px;
+            background: linear-gradient(135deg, var(--primary-blue), #1A5A8A);
         }
 
-        footer h5 {
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        footer a {
-            color: rgba(255,255,255,0.8);
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: white;
-            text-decoration: none;
-        }
-
-        footer .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
-            transition: all 0.3s;
-        }
-
-        footer .social-links a:hover {
-            background: white;
-            color: #1A374D;
+        /* Form Controls */
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.2rem rgba(43, 123, 184, 0.25);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero-section h1 {
                 font-size: 2.5rem;
-            }
-
-            .hero-section .lead {
-                font-size: 1.2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .hero-cta .btn {
-                width: 100%;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .visa-checker-card {
-                padding: 30px 20px;
             }
         }
     </style>
@@ -493,7 +366,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <strong style="font-size: 1.5rem; color: #1A374D;">Njeyali Travel</strong>
+                <strong style="font-size: 1.5rem;">Njeyali Travel</strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -519,12 +392,12 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <h1>Your Journey Begins Here</h1>
                     <p class="lead">Expert visa assistance, curated travel experiences, and seamless booking services for your next adventure</p>
-                    <div class="hero-cta justify-content-center">
+                    <div class="hero-cta justify-content-center" style="display: flex; gap: 15px; flex-wrap: wrap;">
                         <a href="#visa-checker" class="btn btn-primary btn-lg">
                             <i class="fas fa-passport"></i> Check Visa Requirements
                         </a>
@@ -554,21 +427,18 @@
                                     <label for="nationality">Your Nationality</label>
                                     <select class="form-control" id="nationality" name="nationality" required>
                                         <option value="">Select country...</option>
-                                        <!-- Countries will be loaded by JavaScript -->
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="residency">Country of Residence</label>
                                     <select class="form-control" id="residency" name="residency" required>
                                         <option value="">Select country...</option>
-                                        <!-- Countries will be loaded by JavaScript -->
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="destination">Destination</label>
                                     <select class="form-control" id="destination" name="destination" required>
                                         <option value="">Select country...</option>
-                                        <!-- Countries will be loaded by JavaScript -->
                                     </select>
                                 </div>
                             </div>
@@ -583,21 +453,21 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section">
+    <section class="about-section" style="padding: 80px 0; background: white;">
         <div class="container">
             <h2 class="section-title">Why Choose Njeyali Travel?</h2>
             <p class="section-subtitle">Your trusted partner for seamless travel experiences</p>
             
             <div class="row mb-5">
                 <div class="col-md-6">
-                    <div class="about-content">
+                    <div class="about-content" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
                         <p>At <strong>Njeyali Travel</strong>, we specialize in making your travel dreams a reality. From complex visa applications to curated travel packages, we handle every detail so you can focus on creating unforgettable memories.</p>
                         <p>With years of experience in the travel industry, our team of experts provides personalized service, ensuring your journey is smooth from start to finish.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="about-content">
-                        <h4 class="mb-3"><i class="fas fa-check-circle" style="color: #4CAF50;"></i> What We Offer:</h4>
+                    <div class="about-content" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                        <h4 class="mb-3" style="color: var(--primary-blue);"><i class="fas fa-check-circle" style="color: var(--orange);"></i> What We Offer:</h4>
                         <ul style="line-height: 2;">
                             <li><strong>Visa Assistance</strong> - Expert guidance for all visa types</li>
                             <li><strong>Travel Packages</strong> - Curated experiences worldwide</li>
@@ -651,9 +521,9 @@
                         <div class="service-icon">
                             <i class="fas fa-passport"></i>
                         </div>
-                        <h4>Visa Assistance</h4>
-                        <p>Expert guidance for tourist, business, student, and work visas. We handle the paperwork so you don't have to.</p>
-                        <a href="services.html?service=visa" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Visa Assistance</h4>
+                        <p style="color: #666;">Expert guidance for tourist, business, student, and work visas. We handle the paperwork so you don't have to.</p>
+                        <a href="services.html?service=visa" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -661,9 +531,9 @@
                         <div class="service-icon">
                             <i class="fas fa-plane-departure"></i>
                         </div>
-                        <h4>Flight Booking</h4>
-                        <p>Best flight deals with competitive rates. We find you the perfect flights that match your schedule and budget.</p>
-                        <a href="services.html?service=flight" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Flight Booking</h4>
+                        <p style="color: #666;">Best flight deals with competitive rates. We find you the perfect flights that match your schedule and budget.</p>
+                        <a href="services.html?service=flight" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -671,9 +541,9 @@
                         <div class="service-icon">
                             <i class="fas fa-hotel"></i>
                         </div>
-                        <h4>Hotel Booking</h4>
-                        <p>Handpicked accommodations from budget-friendly to luxury. We ensure comfort and convenience at great prices.</p>
-                        <a href="services.html?service=hotel" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Hotel Booking</h4>
+                        <p style="color: #666;">Handpicked accommodations from budget-friendly to luxury. We ensure comfort and convenience at great prices.</p>
+                        <a href="services.html?service=hotel" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -681,9 +551,9 @@
                         <div class="service-icon">
                             <i class="fas fa-concierge-bell"></i>
                         </div>
-                        <h4>Travel Concierge</h4>
-                        <p>Personalized itinerary planning tailored to your interests. Let us create your perfect travel experience.</p>
-                        <a href="services.html?service=concierge" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Travel Concierge</h4>
+                        <p style="color: #666;">Personalized itinerary planning tailored to your interests. Let us create your perfect travel experience.</p>
+                        <a href="services.html?service=concierge" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -691,9 +561,9 @@
                         <div class="service-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <h4>Corporate Travel</h4>
-                        <p>Comprehensive solutions for business travel and group bookings. Streamline your company's travel needs.</p>
-                        <a href="services.html?service=corporate" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Corporate Travel</h4>
+                        <p style="color: #666;">Comprehensive solutions for business travel and group bookings. Streamline your company's travel needs.</p>
+                        <a href="services.html?service=corporate" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -701,9 +571,9 @@
                         <div class="service-icon">
                             <i class="fas fa-comments"></i>
                         </div>
-                        <h4>Travel Consultation</h4>
-                        <p>Expert advice for all your travel queries. Book a consultation with our travel specialists today.</p>
-                        <a href="services.html?service=consultation" class="btn btn-outline-primary">Learn More</a>
+                        <h4 style="font-weight: 600; color: var(--dark-text); margin-bottom: 15px;">Travel Consultation</h4>
+                        <p style="color: #666;">Expert advice for all your travel queries. Book a consultation with our travel specialists today.</p>
+                        <a href="services.html?service=consultation" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -711,24 +581,21 @@
     </section>
 
     <!-- Featured Packages Section -->
-    <section class="packages-section">
+    <section class="packages-section" style="padding: 80px 0; background: white;">
         <div class="container">
             <h2 class="section-title">Featured Travel Packages</h2>
             <p class="section-subtitle">Handpicked experiences for unforgettable adventures</p>
             
-            <!-- Packages Container (loaded by JavaScript) -->
             <div id="featuredPackages" class="row">
-                <!-- Loading state -->
                 <div class="col-12 text-center py-5">
-                    <i class="fas fa-circle-notch fa-spin fa-3x" style="color: #1A374D;"></i>
+                    <i class="fas fa-circle-notch fa-spin fa-3x" style="color: var(--primary-blue);"></i>
                     <p class="mt-3 text-muted">Loading amazing packages...</p>
                 </div>
             </div>
 
-            <!-- View All Button -->
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <a href="packages.html" class="btn btn-primary btn-lg">
+                    <a href="packages.html" class="btn btn-primary btn-lg" style="padding: 15px 50px;">
                         <i class="fas fa-suitcase"></i> View All Packages
                     </a>
                 </div>
@@ -737,24 +604,24 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section">
+    <section class="testimonials-section" style="padding: 80px 0; background: var(--light-bg);">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
             <p class="section-subtitle">Real experiences from real travelers</p>
             
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <i class="fas fa-quote-left testimonial-quote"></i>
-                        <div class="testimonial-text">
+                    <div class="testimonial-card" style="background: white; border-radius: 15px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: 100%;">
+                        <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--orange); opacity: 0.2;"></i>
+                        <div class="testimonial-text" style="font-size: 1.1rem; line-height: 1.8; color: #555; margin: 20px 0; font-style: italic;">
                             "Njeyali Travel made my Dubai trip absolutely seamless! From visa application to hotel booking, everything was perfect. The team was professional and responsive throughout."
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">C</div>
+                        <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="author-avatar" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: white;">C</div>
                             <div class="author-info">
-                                <h5>Chidinma Okafor</h5>
-                                <p>Lagos, Nigeria</p>
-                                <div class="rating">
+                                <h5 style="margin: 0; font-weight: 600; color: #333;">Chidinma Okafor</h5>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Lagos, Nigeria</p>
+                                <div class="rating" style="margin-top: 5px;">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -766,17 +633,17 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <i class="fas fa-quote-left testimonial-quote"></i>
-                        <div class="testimonial-text">
+                    <div class="testimonial-card" style="background: white; border-radius: 15px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: 100%;">
+                        <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--primary-blue); opacity: 0.2;"></i>
+                        <div class="testimonial-text" style="font-size: 1.1rem; line-height: 1.8; color: #555; margin: 20px 0; font-style: italic;">
                             "Best travel agency I've ever worked with! They handled our corporate retreat to Cape Town flawlessly. Highly professional and detail-oriented. Highly recommended!"
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">T</div>
+                        <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="author-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--yellow)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: white;">T</div>
                             <div class="author-info">
-                                <h5>Tunde Adeyemi</h5>
-                                <p>Abuja, Nigeria</p>
-                                <div class="rating">
+                                <h5 style="margin: 0; font-weight: 600; color: #333;">Tunde Adeyemi</h5>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Abuja, Nigeria</p>
+                                <div class="rating" style="margin-top: 5px;">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -788,17 +655,17 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <i class="fas fa-quote-left testimonial-quote"></i>
-                        <div class="testimonial-text">
+                    <div class="testimonial-card" style="background: white; border-radius: 15px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: 100%;">
+                        <i class="fas fa-quote-left" style="font-size: 3rem; color: #4CAF50; opacity: 0.2;"></i>
+                        <div class="testimonial-text" style="font-size: 1.1rem; line-height: 1.8; color: #555; margin: 20px 0; font-style: italic;">
                             "The concierge service was exceptional! They planned every detail of our honeymoon in Maldives. It was truly magical and stress-free. Thank you, Njeyali Travel!"
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">A</div>
+                        <div class="testimonial-author" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="author-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #4CAF50, #66BB6A); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: white;">A</div>
                             <div class="author-info">
-                                <h5>Amara Nwosu</h5>
-                                <p>Port Harcourt, Nigeria</p>
-                                <div class="rating">
+                                <h5 style="margin: 0; font-weight: 600; color: #333;">Amara Nwosu</h5>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Port Harcourt, Nigeria</p>
+                                <div class="rating" style="margin-top: 5px;">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -816,13 +683,13 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Let us help you create unforgettable travel memories</p>
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Ready to Start Your Journey?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; opacity: 0.95;">Let us help you create unforgettable travel memories</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap" style="gap: 15px;">
-                <a href="services.html" class="btn btn-light btn-lg">
+                <a href="services.html" class="btn btn-light btn-lg" style="padding: 15px 40px; font-weight: 600;">
                     <i class="fas fa-paper-plane"></i> Get Started
                 </a>
-                <a href="contact.html" class="btn btn-outline-light btn-lg">
+                <a href="contact.html" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-weight: 600;">
                     <i class="fas fa-phone"></i> Contact Us
                 </a>
             </div>
@@ -830,35 +697,35 @@
     </section>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000; color: white; text-decoration: none; transition: all 0.3s;">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Footer -->
-    <footer>
+    <footer style="color: white; padding: 50px 0 20px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h5>Njeyali Travel</h5>
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Njeyali Travel</h5>
                     <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences around the world.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="mt-3">
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
-                        <li class="mb-2"><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
-                        <li class="mb-2"><a href="packages.html"><i class="fas fa-angle-right"></i> Packages</a></li>
-                        <li class="mb-2"><a href="contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                        <li class="mb-2"><a href="index.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li class="mb-2"><a href="services.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Services</a></li>
+                        <li class="mb-2"><a href="packages.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Packages</a></li>
+                        <li class="mb-2"><a href="contact.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <h5>Contact Info</h5>
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Contact Info</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><i class="fas fa-envelope"></i> info@njeyalitravel.com</li>
                         <li class="mb-2"><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
@@ -874,27 +741,20 @@
             <hr style="background: rgba(255,255,255,0.2); margin: 30px 0;">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="mb-0">&copy; 2025 Njeyali Travel. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p class="mb-0">&copy; 2025 Njeyali Travel. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- jQuery -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Njeyali API -->
     <script src="js/njeyali-api.js"></script>
-
-    <!-- Homepage Packages Loader -->
     <script src="js/homepage-packages.js"></script>
 
-    <!-- Visa Checker Script -->
     <script>
-        // Load countries when page loads
+        // Load countries and visa checker functionality
         document.addEventListener('DOMContentLoaded', async function() {
             try {
                 const countries = await NjeyaliAPI.visa.getCountries();
@@ -905,36 +765,20 @@
                 
                 if (countries && countries.length > 0) {
                     countries.forEach(country => {
-                        // Add to nationality
-                        const option1 = document.createElement('option');
-                        option1.value = country.code;
-                        option1.textContent = country.name;
-                        nationalitySelect.appendChild(option1);
-                        
-                        // Add to residency
-                        const option2 = document.createElement('option');
-                        option2.value = country.code;
-                        option2.textContent = country.name;
-                        residencySelect.appendChild(option2);
-                        
-                        // Add to destination
-                        const option3 = document.createElement('option');
-                        option3.value = country.code;
-                        option3.textContent = country.name;
-                        destinationSelect.appendChild(option3);
+                        [nationalitySelect, residencySelect, destinationSelect].forEach(select => {
+                            const option = document.createElement('option');
+                            option.value = country.code;
+                            option.textContent = country.name;
+                            select.appendChild(option);
+                        });
                     });
-                    
-                    console.log(`✅ Loaded ${countries.length} countries`);
-                } else {
-                    console.warn('No countries loaded from API');
                 }
             } catch (error) {
                 console.error('Error loading countries:', error);
-                NjeyaliAPI.utils.showToast('Failed to load countries. Please refresh the page.', 'error');
             }
         });
 
-        // Handle visa checker form submission
+        // Visa checker form submission
         document.getElementById('visaCheckerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -948,15 +792,14 @@
             }
             
             const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.classList.add('loading');
             submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
             
             try {
                 const result = await NjeyaliAPI.visa.checkVisa(nationality, residency, destination);
                 
                 if (result.success) {
                     if (result.visaRequired) {
-                        // Visa required - store data and redirect to services
                         sessionStorage.setItem('visaCheckData', JSON.stringify({
                             nationality,
                             residency,
@@ -971,32 +814,28 @@
                             window.location.href = 'services.html?service=visa';
                         }, 1500);
                     } else {
-                        // No visa needed
                         NjeyaliAPI.utils.showToast(
                             `Great news! ${result.message}. You can book your trip directly!`, 
                             'success'
                         );
                         
-                        // Optionally redirect to packages or flights
                         setTimeout(() => {
                             if (confirm('Would you like to explore our travel packages?')) {
                                 window.location.href = 'packages.html';
                             }
                         }, 2000);
                     }
-                } else {
-                    NjeyaliAPI.utils.showToast(result.error || 'Failed to check visa requirements', 'error');
                 }
             } catch (error) {
                 console.error('Visa check error:', error);
                 NjeyaliAPI.utils.showToast('An error occurred. Please try again.', 'error');
             } finally {
-                submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-search"></i> Check Visa Requirements';
             }
         });
 
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
