@@ -1,786 +1,1151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Njeyali Travel">
-	<link rel="shortcut icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request travel services from Njeyali Travel - Visa assistance, flight booking, hotel reservations, and more">
+    <title>Our Services - Njeyali Travel</title>
 
-	<meta name="description" content="Njeyali Travel Services - Visa assistance, flight booking, accommodation, and travel concierge" />
-	<meta name="keywords" content="visa application, flight booking, hotel reservation, travel planning" />
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-	<link rel="stylesheet" href="css/daterangepicker.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-	<title>Our Services - Njeyali Travel</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/brand-colors.css">
+    <link rel="stylesheet" href="css/njeyali-api-ui.css">
+
+    <style>
+        /* Hero Section */
+        .services-hero {
+            background: linear-gradient(135deg, #1A374D 0%, #2E5266 100%);
+            color: white;
+            padding: 80px 0 60px;
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Service Selection */
+        .service-selection {
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .service-tab {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+            height: 100%;
+        }
+
+        .service-tab:hover {
+            border-color: #1A374D;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .service-tab.active {
+            background: #1A374D;
+            color: white;
+            border-color: #1A374D;
+        }
+
+        .service-tab i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-tab h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Service Form Container */
+        .service-form-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1A374D;
+        }
+
+        .form-header h2 {
+            color: #1A374D;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Form Styling */
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control,
+        .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #1A374D;
+            box-shadow: 0 0 0 0.2rem rgba(26, 55, 77, 0.15);
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        /* File Upload */
+        .file-upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .file-upload-area:hover {
+            border-color: #1A374D;
+            background: #e9ecef;
+        }
+
+        .file-upload-area i {
+            font-size: 3rem;
+            color: #1A374D;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-area.dragover {
+            border-color: #1A374D;
+            background: #e3f2fd;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            background: #1A374D;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #2E5266;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .info-box i {
+            color: #1976d2;
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 25px 20px;
+            }
+
+            .service-tab {
+                padding: 20px 15px;
+            }
+
+            .service-tab i {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong style="font-size: 1.5rem; color: #1A374D;">Njeyali Travel</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-	<nav class="site-nav">
-		<div class="container">
-			<div class="site-navigation">
-				<a href="index.html" class="logo m-0">Njeyali <span class="text-primary">Travel</span></a>
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Our Services</h1>
+                    <p class="lead">Select a service below to get started with your request</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="services.html">Services</a></li>
-					<li><a href="packages.html">Packages</a></li>
-					<li><a href="contact.html">Contact Us</a></li>
-				</ul>
+    <!-- Service Selection Tabs -->
+    <section class="service-selection">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="visa">
+                        <i class="fas fa-passport"></i>
+                        <h5>Visa Application</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="flight">
+                        <i class="fas fa-plane-departure"></i>
+                        <h5>Flight Booking</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="hotel">
+                        <i class="fas fa-hotel"></i>
+                        <h5>Hotel Booking</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="concierge">
+                        <i class="fas fa-concierge-bell"></i>
+                        <h5>Travel Concierge</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="corporate">
+                        <i class="fas fa-users"></i>
+                        <h5>Corporate Travel</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="consultation">
+                        <i class="fas fa-comments"></i>
+                        <h5>Consultation</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="service-tab" data-service="package">
+                        <i class="fas fa-suitcase"></i>
+                        <h5>Package Request</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
+    <!-- Service Forms Section -->
+    <section class="service-form-section">
+        <div class="container">
 
-			</div>
-		</div>
-	</nav>
+            <!-- Visa Application Form -->
+            <div id="visaForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-passport"></i> Visa Application</h2>
+                    <p>Complete the form below and upload required documents</p>
+                </div>
 
-	<div class="hero hero-inner">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-12 mx-auto text-center">
-					<div class="intro-wrap">
-						<h1 class="mb-3">Our Services</h1>
-						<p class="text-white">Professional travel services tailored to your needs</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Required Documents:</strong> Valid passport, passport photo, and any supporting documents (employment letter, bank statements, etc.)
+                </div>
 
-	<!-- Service Request Form Section -->
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5">
-				<div class="col-lg-8 text-center">
-					<h2 class="section-title mb-3">Request a Service</h2>
-					<p>Select the service you need and fill out the form below</p>
-				</div>
-			</div>
+                <form id="visaApplicationForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
 
-			<div class="row justify-content-center">
-				<div class="col-lg-10">
-					<form class="form stylized-form" id="serviceRequestForm" action="#" method="POST">
-						
-						<!-- Service Type Selection -->
-						<div class="row mb-4">
-							<div class="col-12">
-								<label for="serviceType" class="text-black font-weight-bold">Select Service *</label>
-								<select name="serviceType" id="serviceType" class="form-control custom-select" required>
-									<option value="">Choose a service...</option>
-									<option value="visa">Visa Application</option>
-									<option value="flight">Flight Booking Assistance</option>
-									<option value="hotel">Hotel Booking Assistance</option>
-									<option value="concierge">Travel Concierge / Itinerary Planning</option>
-									<option value="corporate">Corporate & Group Travel</option>
-									<option value="consultation">Travel Consultation</option>
-									<option value="package">Travel Packages</option>
-								</select>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Date of Birth</label>
+                                <input type="date" class="form-control" name="dateOfBirth" required>
+                            </div>
+                        </div>
+                    </div>
 
-						<!-- Common Fields (Always Visible) -->
-						<div class="row mb-3">
-							<div class="col-md-6 mb-3">
-								<label for="fullName" class="text-black">Full Name *</label>
-								<input type="text" class="form-control" id="fullName" name="fullName" required>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="email" class="text-black">Email Address *</label>
-								<input type="email" class="form-control" id="email" name="email" required>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Nationality</label>
+                                <select class="form-control" name="nationality" id="visaNationality" required>
+                                    <option value="">Select country...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Passport Number</label>
+                                <input type="text" class="form-control" name="passportNumber" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Passport Expiry</label>
+                                <input type="date" class="form-control" name="passportExpiry" required>
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="row mb-3">
-							<div class="col-md-6 mb-3">
-								<label for="phone" class="text-black">Phone Number *</label>
-								<input type="tel" class="form-control" id="phone" name="phone" required>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="nationality" class="text-black">Nationality *</label>
-								<select name="nationality" id="nationality" class="form-control custom-select" required>
-									<option value="">Select Nationality</option>
-								</select>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Destination Country</label>
+                                <select class="form-control" name="destinationCountry" id="visaDestination" required>
+                                    <option value="">Select country...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Visa Type</label>
+                                <select class="form-control" name="visaType" required>
+                                    <option value="">Select visa type...</option>
+                                    <option value="tourist">Tourist</option>
+                                    <option value="business">Business</option>
+                                    <option value="student">Student</option>
+                                    <option value="work">Work</option>
+                                    <option value="transit">Transit</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-						<!-- Visa Application Fields -->
-						<div id="visaFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Visa Application Details</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="visaDestination" class="text-black">Destination Country *</label>
-									<select name="visaDestination" id="visaDestination" class="form-control custom-select">
-										<option value="">Select Destination</option>
-									</select>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="travelDate" class="text-black">Intended Travel Date *</label>
-									<input type="date" class="form-control" id="travelDate" name="travelDate">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="travelPurpose" class="text-black">Purpose of Travel *</label>
-									<select name="travelPurpose" id="travelPurpose" class="form-control custom-select">
-										<option value="">Select Purpose</option>
-										<option value="tourism">Tourism</option>
-										<option value="business">Business</option>
-										<option value="study">Study</option>
-										<option value="work">Work</option>
-										<option value="other">Other</option>
-									</select>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="passportUpload" class="text-black">Upload Passport (Data Page) *</label>
-									<input type="file" class="form-control file-input" id="passportUpload" name="passportUpload" accept="image/*,.pdf">
-									<small class="form-text text-muted">We'll extract your information automatically</small>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="documentsUpload" class="text-black">Upload Additional Documents</label>
-									<input type="file" class="form-control file-input" id="documentsUpload" name="documentsUpload" multiple accept="image/*,.pdf">
-									<small class="form-text text-muted">Bank statements, invitation letters, etc.</small>
-								</div>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Travel Date</label>
+                                <input type="date" class="form-control" name="travelDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Duration of Stay</label>
+                                <input type="text" class="form-control" name="durationOfStay" placeholder="e.g., 2 weeks">
+                            </div>
+                        </div>
+                    </div>
 
-						<!-- Flight Booking Fields -->
-						<div id="flightFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Flight Booking Details</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="departureCity" class="text-black">Departure City *</label>
-									<input type="text" class="form-control" id="departureCity" name="departureCity" placeholder="e.g., Lagos">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="destinationCity" class="text-black">Destination City *</label>
-									<input type="text" class="form-control" id="destinationCity" name="destinationCity" placeholder="e.g., London">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="departureDate" class="text-black">Departure Date *</label>
-									<input type="date" class="form-control" id="departureDate" name="departureDate">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="returnDate" class="text-black">Return Date</label>
-									<input type="date" class="form-control" id="returnDate" name="returnDate">
-									<small class="form-text text-muted">Leave empty for one-way</small>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="passengers" class="text-black">Number of Passengers *</label>
-									<input type="number" class="form-control" id="passengers" name="passengers" min="1" value="1">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="classPreference" class="text-black">Class Preference *</label>
-									<select name="classPreference" id="classPreference" class="form-control custom-select">
-										<option value="economy">Economy</option>
-										<option value="premium-economy">Premium Economy</option>
-										<option value="business">Business Class</option>
-										<option value="first">First Class</option>
-									</select>
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label class="form-label required-field">Passport Copy (JPEG/PNG/PDF, max 10MB)</label>
+                        <div class="file-upload-area" data-input="passportFile">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="mb-0"><strong>Click to upload</strong> or drag and drop</p>
+                            <small class="text-muted">JPEG, PNG or PDF (max 10MB)</small>
+                        </div>
+                        <input type="file" name="passportFile" accept="image/jpeg,image/png,application/pdf" style="display: none;" required>
+                        <div class="file-preview mt-2"></div>
+                    </div>
 
-						<!-- Hotel Booking Fields -->
-						<div id="hotelFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Hotel Booking Details</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="hotelLocation" class="text-black">Location/City *</label>
-									<input type="text" class="form-control" id="hotelLocation" name="hotelLocation" placeholder="e.g., Dubai">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="roomType" class="text-black">Room Type *</label>
-									<select name="roomType" id="roomType" class="form-control custom-select">
-										<option value="single">Single Room</option>
-										<option value="double">Double Room</option>
-										<option value="suite">Suite</option>
-										<option value="deluxe">Deluxe</option>
-									</select>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="checkInDate" class="text-black">Check-in Date *</label>
-									<input type="date" class="form-control" id="checkInDate" name="checkInDate">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="checkOutDate" class="text-black">Check-out Date *</label>
-									<input type="date" class="form-control" id="checkOutDate" name="checkOutDate">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="guests" class="text-black">Number of Guests *</label>
-									<input type="number" class="form-control" id="guests" name="guests" min="1" value="1">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="hotelPreference" class="text-black">Hotel Preference</label>
-									<input type="text" class="form-control" id="hotelPreference" name="hotelPreference" placeholder="Any specific hotel?">
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label class="form-label required-field">Passport Photo (JPEG/PNG, max 10MB)</label>
+                        <div class="file-upload-area" data-input="photoFile">
+                            <i class="fas fa-camera"></i>
+                            <p class="mb-0"><strong>Click to upload</strong> or drag and drop</p>
+                            <small class="text-muted">JPEG or PNG (max 10MB)</small>
+                        </div>
+                        <input type="file" name="photoFile" accept="image/jpeg,image/png" style="display: none;" required>
+                        <div class="file-preview mt-2"></div>
+                    </div>
 
-						<!-- Travel Concierge Fields - UPDATED WITH CLIENT CHANGES -->
-						<div id="conciergeFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Travel Concierge / Itinerary Planning</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="tripDestination" class="text-black">Destination(s) *</label>
-									<input type="text" class="form-control" id="tripDestination" name="tripDestination" placeholder="e.g., Paris, Rome">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="tripDuration" class="text-black">Trip Duration *</label>
-									<input type="text" class="form-control" id="tripDuration" name="tripDuration" placeholder="e.g., 7 days">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="tripStartDate" class="text-black">Preferred Start Date *</label>
-									<input type="date" class="form-control" id="tripStartDate" name="tripStartDate">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="travelersCount" class="text-black">Number of Travelers *</label>
-									<input type="number" class="form-control" id="travelersCount" name="travelersCount" min="1" value="1">
-								</div>
-							</div>
-							
-							<!-- NEW: Travel Type Checkboxes -->
-							<div class="row mb-3">
-								<div class="col-12">
-									<label class="text-black d-block mb-2">Travel Type(s) *</label>
-									<div class="custom-checkbox-group">
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="adventure">
-											<span class="checkmark"></span>
-											<span class="label-text">Adventure</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="cultural">
-											<span class="checkmark"></span>
-											<span class="label-text">Cultural</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="relaxation">
-											<span class="checkmark"></span>
-											<span class="label-text">Relaxation</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="food-tours">
-											<span class="checkmark"></span>
-											<span class="label-text">Food Tours</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="beach">
-											<span class="checkmark"></span>
-											<span class="label-text">Beach</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="wildlife">
-											<span class="checkmark"></span>
-											<span class="label-text">Wildlife</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="luxury">
-											<span class="checkmark"></span>
-											<span class="label-text">Luxury</span>
-										</label>
-										<label class="custom-checkbox">
-											<input type="checkbox" name="travelTypes[]" value="budget">
-											<span class="checkmark"></span>
-											<span class="label-text">Budget</span>
-										</label>
-									</div>
-								</div>
-							</div>
+                    <div class="form-group">
+                        <label class="form-label">Supporting Documents (Optional)</label>
+                        <div class="file-upload-area" data-input="documentFiles">
+                            <i class="fas fa-file-alt"></i>
+                            <p class="mb-0"><strong>Click to upload</strong> or drag and drop</p>
+                            <small class="text-muted">Employment letter, bank statements, etc.</small>
+                        </div>
+                        <input type="file" name="documentFiles" accept=".pdf,image/jpeg,image/png" multiple style="display: none;">
+                        <div class="file-preview mt-2"></div>
+                    </div>
 
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="interests" class="text-black">Additional Interests & Preferences</label>
-									<textarea class="form-control" id="interests" name="interests" rows="3" placeholder="Tell us more about what you'd like to experience..."></textarea>
-								</div>
-							</div>
-							
-							<!-- UPDATED: Budget as Text Area -->
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="budget" class="text-black">Budget Information</label>
-									<textarea class="form-control" id="budget" name="budget" rows="2" placeholder="Please share your budget range or constraints..."></textarea>
-									<small class="form-text text-muted">This helps us tailor our recommendations to your needs</small>
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label class="form-label">Additional Information</label>
+                        <textarea class="form-control" name="additionalInfo" rows="4" placeholder="Any additional details you'd like us to know..."></textarea>
+                    </div>
 
-						<!-- Corporate Travel Fields -->
-						<div id="corporateFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Corporate & Group Travel</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="companyName" class="text-black">Company Name *</label>
-									<input type="text" class="form-control" id="companyName" name="companyName">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="groupSize" class="text-black">Group Size *</label>
-									<input type="number" class="form-control" id="groupSize" name="groupSize" min="2" placeholder="Number of travelers">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="corporateDestination" class="text-black">Destination *</label>
-									<input type="text" class="form-control" id="corporateDestination" name="corporateDestination">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="eventDate" class="text-black">Event/Travel Date *</label>
-									<input type="date" class="form-control" id="eventDate" name="eventDate">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="corporateRequirements" class="text-black">Special Requirements</label>
-									<textarea class="form-control" id="corporateRequirements" name="corporateRequirements" rows="3" placeholder="Meeting rooms, team building activities, etc."></textarea>
-								</div>
-							</div>
-						</div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Visa Application
+                    </button>
+                </form>
+            </div>
 
-						<!-- Consultation Fields -->
-						<div id="consultationFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Travel Consultation</h4>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="consultationType" class="text-black">Consultation Type *</label>
-									<select name="consultationType" id="consultationType" class="form-control custom-select">
-										<option value="">Select Type</option>
-										<option value="visa-consultation">Visa Consultation</option>
-										<option value="trip-planning">Trip Planning</option>
-										<option value="destination-advice">Destination Advice</option>
-										<option value="general">General Travel Advice</option>
-									</select>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="preferredDate" class="text-black">Preferred Consultation Date</label>
-									<input type="date" class="form-control" id="preferredDate" name="preferredDate">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="consultationDetails" class="text-black">What would you like to discuss? *</label>
-									<textarea class="form-control" id="consultationDetails" name="consultationDetails" rows="4" placeholder="Describe your travel plans or questions..."></textarea>
-								</div>
-							</div>
-						</div>
+            <!-- Flight Booking Form -->
+            <div id="flightForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-plane-departure"></i> Flight Booking Request</h2>
+                    <p>Tell us about your flight requirements</p>
+                </div>
 
-						<!-- Package Fields -->
-						<div id="packageFields" class="service-fields" style="display: none;">
-							<h4 class="mb-3 section-subtitle">Travel Package Request</h4>
-							<div class="row mb-3">
-								<div class="col-12">
-									<label for="packageName" class="text-black">Package Name (if specific)</label>
-									<input type="text" class="form-control" id="packageName" name="packageName" placeholder="e.g., Dubai Luxury Experience">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 mb-3">
-									<label for="packageTravelers" class="text-black">Number of Travelers *</label>
-									<input type="number" class="form-control" id="packageTravelers" name="packageTravelers" min="1" value="1">
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="packageDate" class="text-black">Preferred Travel Date</label>
-									<input type="date" class="form-control" id="packageDate" name="packageDate">
-								</div>
-							</div>
-						</div>
+                <form id="flightBookingForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
 
-						<!-- Additional Comments (Always Visible) -->
-						<div class="row mb-4">
-							<div class="col-12">
-								<label for="additionalComments" class="text-black">Additional Comments</label>
-								<textarea class="form-control" id="additionalComments" name="additionalComments" rows="3" placeholder="Any other information you'd like to share..."></textarea>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Trip Type</label>
+                                <select class="form-control" name="tripType" required>
+                                    <option value="one-way">One Way</option>
+                                    <option value="round-trip">Round Trip</option>
+                                    <option value="multi-city">Multi City</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-						<!-- Submit Button -->
-						<div class="row">
-							<div class="col-12 text-center">
-								<button type="submit" class="btn btn-primary btn-lg px-5">Submit Request</button>
-							</div>
-						</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Departure City</label>
+                                <input type="text" class="form-control" name="departureCity" placeholder="e.g., Lagos" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Destination City</label>
+                                <input type="text" class="form-control" name="destinationCity" placeholder="e.g., Dubai" required>
+                            </div>
+                        </div>
+                    </div>
 
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Departure Date</label>
+                                <input type="date" class="form-control" name="departureDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Return Date</label>
+                                <input type="date" class="form-control" name="returnDate">
+                            </div>
+                        </div>
+                    </div>
 
-	<!-- Services Overview Section -->
-	<div class="untree_co-section bg-light">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-7 text-center">
-					<h2 class="section-title text-center mb-3">What We Offer</h2>
-					<p>Comprehensive travel solutions for every need</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="icon-paper-plane display-4 text-primary d-block mb-3"></span>
-						<h3>Visa Assistance</h3>
-						<p>Complete visa application support with document verification, form filling, and submission assistance.</p>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="icon-airplane display-4 text-primary d-block mb-3"></span>
-						<h3>Flight Booking</h3>
-						<p>Access to best flight deals and expert assistance in booking your perfect flights.</p>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="flaticon-house display-4 text-primary d-block mb-3"></span>
-						<h3>Accommodation</h3>
-						<p>Hotel and lodging reservations worldwide with competitive rates and verified properties.</p>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="icon-user display-4 text-primary d-block mb-3"></span>
-						<h3>Travel Concierge</h3>
-						<p>Personalized trip planning, itinerary creation, and 24/7 travel support.</p>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="icon-briefcase display-4 text-primary d-block mb-3"></span>
-						<h3>Corporate Travel</h3>
-						<p>Specialized group bookings and corporate travel management solutions.</p>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 mb-4">
-					<div class="service text-center">
-						<span class="icon-support display-4 text-primary d-block mb-3"></span>
-						<h3>Consultation</h3>
-						<p>Expert travel advice and planning sessions to make your trip perfect.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Adults</label>
+                                <input type="number" class="form-control" name="adults" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Children</label>
+                                <input type="number" class="form-control" name="children" min="0" value="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Infants</label>
+                                <input type="number" class="form-control" name="infants" min="0" value="0">
+                            </div>
+                        </div>
+                    </div>
 
-	<!-- Footer -->
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Njeyali Travel</h3>
-							<p>Your trusted travel concierge for visa assistance, curated travel experiences, and comprehensive travel support services worldwide.</p>
-						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Quick Links</h3>
-							<ul class="links list-unstyled">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="packages.html">Packages</a></li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Services</h3>
-							<ul class="links list-unstyled">
-								<li><a href="services.html?service=visa">Visa Assistance</a></li>
-								<li><a href="services.html?service=flight">Flight Booking</a></li>
-								<li><a href="services.html?service=hotel">Accommodation</a></li>
-								<li><a href="services.html?service=concierge">Travel Concierge</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact Us</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="mailto:info@njeyalitravel.com">info@njeyalitravel.com</a></li>
-								<li class="phone"><a href="tel:+2348012345678">+234 801 234 5678</a></li>
-								<li class="address"><a href="#">Lagos, Nigeria</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Class</label>
+                                <select class="form-control" name="class" required>
+                                    <option value="economy">Economy</option>
+                                    <option value="premium-economy">Premium Economy</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">First Class</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Preferred Airline</label>
+                                <input type="text" class="form-control" name="preferredAirline" placeholder="e.g., Emirates">
+                            </div>
+                        </div>
+                    </div>
 
-		<div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Njeyali Travel. All Rights Reserved.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        <label class="form-label">Special Requirements</label>
+                        <textarea class="form-control" name="specialRequirements" rows="4" placeholder="Meal preferences, accessibility needs, etc."></textarea>
+                    </div>
 
-	<!-- WhatsApp Float Button -->
-	<a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-		<span class="icon-whatsapp"></span>
-	</a>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Flight Request
+                    </button>
+                </form>
+            </div>
 
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="sr-only">Loading...</span>
-		</div>
-	</div>
+            <!-- Hotel Booking Form -->
+            <div id="hotelForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-hotel"></i> Hotel Booking Request</h2>
+                    <p>Let us find the perfect accommodation for you</p>
+                </div>
 
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.fancybox.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/moment.min.js"></script>
-	<script src="js/daterangepicker.js"></script>
-	<script src="js/typed.js"></script>
-	<script src="js/custom.js"></script>
+                <form id="hotelBookingForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
 
-	<!-- API Integration -->
-	<script src="js/njeyali-api.js"></script>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Destination City</label>
+                                <input type="text" class="form-control" name="destinationCity" placeholder="e.g., Dubai" required>
+                            </div>
+                        </div>
+                    </div>
 
-	<style>
-		.whatsapp-float {
-			position: fixed;
-			width: 60px;
-			height: 60px;
-			bottom: 40px;
-			right: 40px;
-			background-color: #25d366;
-			color: #FFF;
-			border-radius: 50px;
-			text-align: center;
-			font-size: 30px;
-			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-			z-index: 100;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: all 0.3s ease;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Check-in Date</label>
+                                <input type="date" class="form-control" name="checkInDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Check-out Date</label>
+                                <input type="date" class="form-control" name="checkOutDate" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.whatsapp-float:hover {
-			background-color: #128C7E;
-			color: #FFF;
-			transform: scale(1.1);
-		}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Number of Rooms</label>
+                                <input type="number" class="form-control" name="numberOfRooms" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label required-field">Adults</label>
+                                <input type="number" class="form-control" name="adults" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Children</label>
+                                <input type="number" class="form-control" name="children" min="0" value="0">
+                            </div>
+                        </div>
+                    </div>
 
-		/* Enhanced Form Styling */
-		.stylized-form {
-			background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-			padding: 40px;
-			border-radius: 20px;
-			box-shadow: 0 10px 40px rgba(26, 55, 77, 0.1);
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Room Type</label>
+                                <select class="form-control" name="roomType" required>
+                                    <option value="">Select room type...</option>
+                                    <option value="standard">Standard Room</option>
+                                    <option value="deluxe">Deluxe Room</option>
+                                    <option value="suite">Suite</option>
+                                    <option value="executive">Executive Room</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Budget (per night)</label>
+                                <input type="text" class="form-control" name="budget" placeholder="e.g., $100-200">
+                            </div>
+                        </div>
+                    </div>
 
-		.stylized-form .form-control,
-		.stylized-form .custom-select {
-			border: 2px solid #e3e8ef;
-			border-radius: 10px;
-			padding: 12px 20px;
-			font-size: 15px;
-			transition: all 0.3s ease;
-			background-color: #ffffff;
-		}
+                    <div class="form-group">
+                        <label class="form-label">Special Requirements</label>
+                        <textarea class="form-control" name="specialRequirements" rows="4" placeholder="Breakfast included, airport shuttle, etc."></textarea>
+                    </div>
 
-		.stylized-form .form-control:focus,
-		.stylized-form .custom-select:focus {
-			border-color: #1A374D;
-			box-shadow: 0 0 0 0.2rem rgba(26, 55, 77, 0.15);
-			transform: translateY(-2px);
-		}
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Hotel Request
+                    </button>
+                </form>
+            </div>
 
-		.stylized-form label {
-			font-weight: 600;
-			margin-bottom: 8px;
-			color: #1A374D;
-			font-size: 14px;
-		}
+            <!-- Concierge Form -->
+            <div id="conciergeForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-concierge-bell"></i> Travel Concierge Service</h2>
+                    <p>Let us create a personalized itinerary for you</p>
+                </div>
 
-		.stylized-form .file-input {
-			padding: 10px;
-			cursor: pointer;
-		}
+                <form id="conciergeServiceForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.service-fields {
-			border-top: 3px solid #1A374D;
-			padding-top: 30px;
-			margin-top: 30px;
-			background: rgba(26, 55, 77, 0.03);
-			border-radius: 15px;
-			padding: 30px 20px;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Destination</label>
+                                <input type="text" class="form-control" name="destination" placeholder="e.g., Dubai, UAE" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.section-subtitle {
-			color: #1A374D;
-			font-weight: 700;
-			font-size: 1.3rem;
-			position: relative;
-			padding-left: 20px;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Travel Start Date</label>
+                                <input type="date" class="form-control" name="startDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Travel End Date</label>
+                                <input type="date" class="form-control" name="endDate" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.section-subtitle:before {
-			content: "";
-			position: absolute;
-			left: 0;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 4px;
-			height: 24px;
-			background: #1A374D;
-			border-radius: 2px;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Number of Travelers</label>
+                                <input type="number" class="form-control" name="numberOfTravelers" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Budget</label>
+                                <input type="text" class="form-control" name="budget" placeholder="e.g., $5000">
+                            </div>
+                        </div>
+                    </div>
 
-		/* Custom Checkbox Styling */
-		.custom-checkbox-group {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 15px;
-		}
+                    <div class="form-group">
+                        <label class="form-label required-field">Interests & Preferences</label>
+                        <textarea class="form-control" name="interests" rows="4" placeholder="Adventure activities, cultural sites, dining, shopping, etc." required></textarea>
+                    </div>
 
-		.custom-checkbox {
-			display: inline-flex;
-			align-items: center;
-			cursor: pointer;
-			padding: 10px 20px;
-			background: #ffffff;
-			border: 2px solid #e3e8ef;
-			border-radius: 25px;
-			transition: all 0.3s ease;
-			position: relative;
-		}
+                    <div class="form-group">
+                        <label class="form-label">Special Requirements</label>
+                        <textarea class="form-control" name="specialRequirements" rows="3" placeholder="Dietary restrictions, accessibility needs, etc."></textarea>
+                    </div>
 
-		.custom-checkbox:hover {
-			border-color: #1A374D;
-			transform: translateY(-2px);
-			box-shadow: 0 4px 12px rgba(26, 55, 77, 0.1);
-		}
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Request Concierge Service
+                    </button>
+                </form>
+            </div>
 
-		.custom-checkbox input[type="checkbox"] {
-			position: absolute;
-			opacity: 0;
-			cursor: pointer;
-		}
+            <!-- Corporate Travel Form -->
+            <div id="corporateForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-users"></i> Corporate Travel Solutions</h2>
+                    <p>Streamline your business and group travel needs</p>
+                </div>
 
-		.custom-checkbox .checkmark {
-			width: 20px;
-			height: 20px;
-			border: 2px solid #1A374D;
-			border-radius: 4px;
-			margin-right: 10px;
-			position: relative;
-			transition: all 0.3s ease;
-		}
+                <form id="corporateTravelForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Company Name</label>
+                                <input type="text" class="form-control" name="companyName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Contact Person</label>
+                                <input type="text" class="form-control" name="contactPerson" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
-			background-color: #1A374D;
-			border-color: #1A374D;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.custom-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
-			content: "✓";
-			position: absolute;
-			color: white;
-			font-size: 14px;
-			font-weight: bold;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Trip Purpose</label>
+                                <select class="form-control" name="tripPurpose" required>
+                                    <option value="">Select purpose...</option>
+                                    <option value="conference">Conference</option>
+                                    <option value="team-building">Team Building</option>
+                                    <option value="business-meeting">Business Meeting</option>
+                                    <option value="training">Training</option>
+                                    <option value="retreat">Corporate Retreat</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Destination</label>
+                                <input type="text" class="form-control" name="destination" placeholder="e.g., Cape Town" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.custom-checkbox input[type="checkbox"]:checked ~ .label-text {
-			color: #1A374D;
-			font-weight: 600;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Travel Date</label>
+                                <input type="date" class="form-control" name="travelDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Return Date</label>
+                                <input type="date" class="form-control" name="returnDate" required>
+                            </div>
+                        </div>
+                    </div>
 
-		.custom-checkbox .label-text {
-			font-size: 14px;
-			color: #495057;
-			transition: all 0.3s ease;
-		}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Number of Travelers</label>
+                                <input type="number" class="form-control" name="numberOfTravelers" min="1" value="10" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Budget (per person)</label>
+                                <input type="text" class="form-control" name="budget" placeholder="e.g., $1500">
+                            </div>
+                        </div>
+                    </div>
 
-		/* Button Styling */
-		.stylized-form .btn-primary {
-			padding: 15px 50px;
-			font-size: 16px;
-			font-weight: 600;
-			border-radius: 30px;
-			box-shadow: 0 4px 15px rgba(26, 55, 77, 0.3);
-			transition: all 0.3s ease;
-		}
+                    <div class="form-group">
+                        <label class="form-label">Services Required</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="flights" name="services[]" value="flights">
+                                    <label class="custom-control-label" for="flights">Flight Booking</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="accommodation" name="services[]" value="accommodation">
+                                    <label class="custom-control-label" for="accommodation">Accommodation</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="transportation" name="services[]" value="transportation">
+                                    <label class="custom-control-label" for="transportation">Ground Transportation</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="meals" name="services[]" value="meals">
+                                    <label class="custom-control-label" for="meals">Catering/Meals</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="venue" name="services[]" value="venue">
+                                    <label class="custom-control-label" for="venue">Venue Booking</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="activities" name="services[]" value="activities">
+                                    <label class="custom-control-label" for="activities">Activities/Tours</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-		.stylized-form .btn-primary:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 6px 20px rgba(26, 55, 77, 0.4);
-		}
+                    <div class="form-group">
+                        <label class="form-label">Additional Requirements</label>
+                        <textarea class="form-control" name="additionalRequirements" rows="4" placeholder="Any specific needs or preferences..."></textarea>
+                    </div>
 
-		/* Responsive */
-		@media (max-width: 768px) {
-			.stylized-form {
-				padding: 25px;
-			}
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Corporate Request
+                    </button>
+                </form>
+            </div>
 
-			.custom-checkbox {
-				padding: 8px 15px;
-				font-size: 13px;
-			}
+            <!-- Consultation Form -->
+            <div id="consultationForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-comments"></i> Travel Consultation</h2>
+                    <p>Book a consultation with our travel experts</p>
+                </div>
 
-			.custom-checkbox .checkmark {
-				width: 18px;
-				height: 18px;
-			}
-		}
-	</style>
+                <form id="consultationBookingForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Consultation Type</label>
+                                <select class="form-control" name="consultationType" required>
+                                    <option value="">Select type...</option>
+                                    <option value="visa">Visa Consultation</option>
+                                    <option value="travel-planning">Travel Planning</option>
+                                    <option value="destination">Destination Advice</option>
+                                    <option value="corporate">Corporate Travel</option>
+                                    <option value="general">General Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Preferred Date</label>
+                                <input type="date" class="form-control" name="preferredDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Preferred Time</label>
+                                <select class="form-control" name="preferredTime" required>
+                                    <option value="">Select time...</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Meeting Preference</label>
+                        <select class="form-control" name="meetingPreference">
+                            <option value="phone">Phone Call</option>
+                            <option value="video">Video Call</option>
+                            <option value="in-person">In-Person</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required-field">What would you like to discuss?</label>
+                        <textarea class="form-control" name="consultationTopic" rows="5" placeholder="Please provide details about what you'd like to discuss..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Book Consultation
+                    </button>
+                </form>
+            </div>
+
+            <!-- Package Request Form -->
+            <div id="packageForm" class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-suitcase"></i> Package Request</h2>
+                    <p>Request information about our travel packages</p>
+                </div>
+
+                <div id="packageInfo" class="info-box" style="display: none;">
+                    <i class="fas fa-suitcase"></i>
+                    <strong>Package:</strong> <span id="packageInfoName"></span> - <span id="packageInfoPrice"></span>
+                </div>
+
+                <form id="packageRequestForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Number of Travelers</label>
+                                <input type="number" class="form-control" name="numberOfTravelers" min="1" value="1" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required-field">Preferred Travel Date</label>
+                                <input type="date" class="form-control" name="preferredTravelDate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Package Name</label>
+                                <input type="text" class="form-control" name="packageName" id="packageNameInput" placeholder="e.g., Dubai Luxury Experience">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Special Requirements</label>
+                        <textarea class="form-control" name="specialRequirements" rows="4" placeholder="Any customizations or special requests..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">How did you hear about us?</label>
+                        <select class="form-control" name="referralSource">
+                            <option value="">Select...</option>
+                            <option value="google">Google Search</option>
+                            <option value="social-media">Social Media</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="advertisement">Advertisement</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Request Package Information
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Njeyali Travel</h5>
+                    <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="services.html" class="text-white">Services</a></li>
+                        <li><a href="packages.html" class="text-white">Packages</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-envelope"></i> info@njeyalitravel.com</p>
+                    <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p>&copy; 2025 Njeyali Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Njeyali API -->
+    <script src="js/njeyali-api.js"></script>
+
+    <!-- Services Page Script -->
+    <script src="js/services-handler.js"></script>
 
 </body>
 </html>
