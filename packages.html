@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover amazing travel packages from Njeyali Travel - luxury getaways, safari adventures, cultural tours, and beach escapes">
+    <title>Travel Packages - Njeyali Travel</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/brand-colors.css">
+    <link rel="stylesheet" href="css/njeyali-api-ui.css">
+
+    <style>
+        /* Hero Section */
+        .packages-hero {
+            background: linear-gradient(135deg, #1A374D 0%, #2E5266 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .packages-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/pattern.png') repeat;
+            opacity: 0.1;
+        }
+
+        .packages-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .packages-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .packages-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Filters Section */
+        .filters-section {
+            background: #f8f9fa;
+            padding: 30px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .btn-filter {
+            background: #1A374D;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-filter:hover {
+            background: #2E5266;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: #1A374D;
+            border: 2px solid #1A374D;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 10px;
+        }
+
+        .btn-reset:hover {
+            background: #1A374D;
+            color: white;
+        }
+
+        /* Package Cards */
+        .packages-grid {
+            padding: 60px 0;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .package-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF6B6B;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .package-badge.featured {
+            background: #FFD93D;
+            color: #333;
+        }
+
+        .package-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-category {
+            color: #1A374D;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .package-destination {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-destination i {
+            color: #1A374D;
+            margin-right: 8px;
+        }
+
+        .package-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+            flex: 1;
+        }
+
+        .package-highlights li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .package-highlights li i {
+            color: #4CAF50;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .package-footer {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .package-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1A374D;
+        }
+
+        .package-price small {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .package-duration {
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-duration i {
+            margin-right: 5px;
+            color: #1A374D;
+        }
+
+        .btn-view-package {
+            background: #1A374D;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-view-package:hover {
+            background: #2E5266;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state i {
+            font-size: 80px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #999;
+        }
+
+        /* Loading State */
+        .loading-packages {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loading-packages i {
+            font-size: 48px;
+            color: #1A374D;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Results Count */
+        .results-info {
+            padding: 20px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .results-info strong {
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .packages-hero h1 {
+                font-size: 2rem;
+            }
+
+            .package-image {
+                height: 200px;
+            }
+
+            .btn-reset {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .btn-filter {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header/Navigation (reuse from your existing pages) -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <strong>Njeyali Travel</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="packages.html">Packages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="packages-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Explore Our Travel Packages</h1>
+                    <p>Curated experiences for unforgettable journeys</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <form id="filterForm">
+                <div class="row align-items-end">
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label for="categoryFilter">Category</label>
+                            <select id="categoryFilter" name="category">
+                                <option value="">All Categories</option>
+                                <option value="luxury">Luxury</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="cultural">Cultural</option>
+                                <option value="beach">Beach</option>
+                                <option value="safari">Safari</option>
+                                <option value="city-break">City Break</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label for="destinationFilter">Destination</label>
+                            <input type="text" id="destinationFilter" name="destination" placeholder="e.g., Dubai, South Africa">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-group">
+                            <label for="minPrice">Min Price ($)</label>
+                            <input type="number" id="minPrice" name="minPrice" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-group">
+                            <label for="maxPrice">Max Price ($)</label>
+                            <input type="number" id="maxPrice" name="maxPrice" placeholder="10000">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-group">
+                            <button type="submit" class="btn-filter">
+                                <i class="fas fa-search"></i> Filter
+                            </button>
+                            <button type="button" class="btn-reset" onclick="resetFilters()">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results Info -->
+    <section class="results-info">
+        <div class="container">
+            <div id="resultsCount"></div>
+        </div>
+    </section>
+
+    <!-- Packages Grid -->
+    <section class="packages-grid">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-packages">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <p>Loading amazing packages...</p>
+            </div>
+
+            <!-- Packages Container -->
+            <div id="packagesContainer" class="row" style="display: none;">
+                <!-- Packages will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-suitcase-rolling"></i>
+                <h3>No packages found</h3>
+                <p>Try adjusting your filters or check back later for new packages.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348012345678" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer (reuse from your existing pages) -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Njeyali Travel</h5>
+                    <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="services.html" class="text-white">Services</a></li>
+                        <li><a href="packages.html" class="text-white">Packages</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-envelope"></i> info@njeyalitravel.com</p>
+                    <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white mr-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p>&copy; 2025 Njeyali Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Njeyali API -->
+    <script src="js/njeyali-api.js"></script>
+
+    <!-- Packages Page Script -->
+    <script src="js/packages.js"></script>
+
+</body>
+</html>
