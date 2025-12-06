@@ -1,0 +1,502 @@
+/**
+ * Njeyali API UI Components
+ * Styles for toasts, loading spinners, and feedback elements
+ */
+
+/* ============================================================================
+   TOAST NOTIFICATIONS
+   ============================================================================ */
+
+.njeyali-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease-in-out;
+}
+
+.njeyali-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.njeyali-toast .toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.njeyali-toast i {
+    font-size: 20px;
+}
+
+.njeyali-toast span {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Toast Types */
+.njeyali-toast-success {
+    border-left: 4px solid #28a745;
+}
+
+.njeyali-toast-success i {
+    color: #28a745;
+}
+
+.njeyali-toast-error {
+    border-left: 4px solid #dc3545;
+}
+
+.njeyali-toast-error i {
+    color: #dc3545;
+}
+
+.njeyali-toast-info {
+    border-left: 4px solid #17a2b8;
+}
+
+.njeyali-toast-info i {
+    color: #17a2b8;
+}
+
+.njeyali-toast-warning {
+    border-left: 4px solid #ffc107;
+}
+
+.njeyali-toast-warning i {
+    color: #ffc107;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    .njeyali-toast {
+        left: 20px;
+        right: 20px;
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+/* ============================================================================
+   LOADING SPINNERS
+   ============================================================================ */
+
+.njeyali-spinner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.njeyali-spinner i {
+    font-size: 18px;
+    color: #1A374D;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Full page loading overlay */
+.njeyali-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.njeyali-loading-overlay i {
+    font-size: 48px;
+    color: #1A374D;
+    margin-bottom: 20px;
+}
+
+.njeyali-loading-overlay p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+/* ============================================================================
+   FORM VALIDATION STYLES
+   ============================================================================ */
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.form-control.is-valid {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.valid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #28a745;
+}
+
+/* ============================================================================
+   PROGRESS BARS
+   ============================================================================ */
+
+.njeyali-progress {
+    width: 100%;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.njeyali-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1A374D, #2E5266);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Upload progress */
+.upload-progress {
+    margin-top: 15px;
+}
+
+.upload-progress-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* ============================================================================
+   FILE UPLOAD PREVIEW
+   ============================================================================ */
+
+.file-upload-preview {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.file-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.file-preview-item:last-child {
+    margin-bottom: 0;
+}
+
+.file-preview-icon {
+    font-size: 24px;
+    color: #1A374D;
+}
+
+.file-preview-info {
+    flex: 1;
+}
+
+.file-preview-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.file-preview-size {
+    font-size: 12px;
+    color: #666;
+}
+
+.file-preview-remove {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.file-preview-remove:hover {
+    color: #a71d2a;
+}
+
+/* ============================================================================
+   BUTTON LOADING STATES
+   ============================================================================ */
+
+.btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.6s linear infinite;
+}
+
+/* ============================================================================
+   MODAL OVERLAYS
+   ============================================================================ */
+
+.njeyali-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+}
+
+.njeyali-modal-overlay.active {
+    display: flex;
+}
+
+.njeyali-modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.njeyali-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.njeyali-modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.njeyali-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.njeyali-modal-close:hover {
+    color: #333;
+}
+
+.njeyali-modal-body {
+    padding: 24px;
+}
+
+.njeyali-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+/* ============================================================================
+   EMPTY STATES
+   ============================================================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-state-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.empty-state-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ============================================================================
+   SKELETON LOADERS
+   ============================================================================ */
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-title {
+    height: 24px;
+    margin-bottom: 12px;
+    width: 60%;
+}
+
+.skeleton-card {
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
