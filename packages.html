@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover amazing travel packages from Njeyali Travel - luxury getaways, safari adventures, cultural tours, and beach escapes">
-    <title>Travel Packages - Njeyali Travel</title>
+    <meta name="description" content="Discover amazing holiday packages with Njeyali Travel - Your gateway to unforgettable travel experiences">
+    <title>Holiday Packages - Njeyali Travel</title>
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.png">
@@ -21,11 +21,44 @@
     <link rel="stylesheet" href="css/njeyali-api-ui.css">
 
     <style>
+        /* Brand Colors */
+        :root {
+            --primary-blue: #2B7BB8;
+            --light-blue: #5BA4D8;
+            --orange: #FF8C00;
+            --yellow: #FFB800;
+            --dark-text: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        /* Navigation */
+        .navbar-brand strong {
+            background: linear-gradient(135deg, var(--primary-blue), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--dark-text) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        .nav-item.active .nav-link {
+            color: var(--primary-blue) !important;
+            font-weight: 600;
+        }
+
         /* Hero Section */
         .packages-hero {
-            background: linear-gradient(135deg, #1A374D 0%, #2E5266 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--orange) 100%);
             color: white;
-            padding: 80px 0 60px;
+            padding: 100px 0 80px;
             position: relative;
             overflow: hidden;
         }
@@ -33,100 +66,117 @@
         .packages-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/pattern.png') repeat;
-            opacity: 0.1;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 184, 0, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .packages-hero .container {
-            position: relative;
-            z-index: 1;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .packages-hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-        }
-
-        .packages-hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
         }
 
         /* Filters Section */
         .filters-section {
-            background: #f8f9fa;
-            padding: 30px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 56px;
+            z-index: 100;
         }
 
         .filter-group {
-            margin-bottom: 15px;
+            margin-bottom: 0;
         }
 
         .filter-group label {
             font-weight: 600;
+            color: var(--dark-text);
             margin-bottom: 8px;
-            display: block;
-            color: #333;
         }
 
-        .filter-group select,
-        .filter-group input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+        .form-control, .form-control-sm {
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-control-sm:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.2rem rgba(43, 123, 184, 0.25);
         }
 
         .btn-filter {
-            background: #1A374D;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
             color: white;
-            padding: 10px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 10px 30px;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s;
         }
 
         .btn-filter:hover {
-            background: #2E5266;
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
         }
 
         .btn-reset {
-            background: transparent;
-            color: #1A374D;
-            border: 2px solid #1A374D;
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
             padding: 10px 30px;
-            border-radius: 5px;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s;
-            margin-left: 10px;
         }
 
         .btn-reset:hover {
-            background: #1A374D;
+            background: var(--primary-blue);
             color: white;
         }
 
-        /* Package Cards */
-        .packages-grid {
+        /* Packages Section */
+        .packages-section {
             padding: 60px 0;
+            background: var(--light-bg);
         }
 
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .results-count {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Package Card - Wakanow Style */
         .package-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s;
             margin-bottom: 30px;
             height: 100%;
@@ -135,154 +185,186 @@
         }
 
         .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .package-image {
             position: relative;
-            height: 250px;
+            width: 100%;
+            padding-top: 67%; /* 3:2 aspect ratio */
             overflow: hidden;
         }
 
         .package-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.5s;
         }
 
         .package-card:hover .package-image img {
             transform: scale(1.1);
         }
 
-        .package-badge {
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(255, 140, 0, 0.4);
+            z-index: 10;
+        }
+
+        .wishlist-btn {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: #FF6B6B;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
-        .package-badge.featured {
-            background: #FFD93D;
-            color: #333;
+        .wishlist-btn:hover {
+            background: var(--orange);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .wishlist-btn i {
+            font-size: 1.2rem;
         }
 
         .package-content {
             padding: 25px;
-            flex: 1;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .package-category {
-            color: #1A374D;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
         .package-title {
-            font-size: 1.5rem;
+            color: var(--dark-text);
             font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            min-height: 63px;
         }
 
-        .package-destination {
+        .package-location {
             color: #666;
-            font-size: 14px;
+            font-size: 1rem;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            gap: 8px;
         }
 
-        .package-destination i {
-            color: #1A374D;
-            margin-right: 8px;
+        .package-location i {
+            color: var(--orange);
+        }
+
+        .package-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .meta-item i {
+            color: var(--primary-blue);
         }
 
         .package-highlights {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-            flex: 1;
+            margin-bottom: 20px;
         }
 
-        .package-highlights li {
-            padding: 8px 0;
-            color: #666;
-            font-size: 14px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .package-highlights li i {
-            color: #4CAF50;
-            margin-right: 10px;
-            margin-top: 3px;
+        .highlight-tag {
+            display: inline-block;
+            background: #E3F2FD;
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
         }
 
         .package-footer {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            margin-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            margin-top: auto;
         }
 
         .package-price {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #1A374D;
-        }
-
-        .package-price small {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .package-duration {
-            color: #666;
-            font-size: 14px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
         }
 
-        .package-duration i {
-            margin-right: 5px;
-            color: #1A374D;
+        .price-label {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
         }
 
-        .btn-view-package {
-            background: #1A374D;
+        .price-amount {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .price-person {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .btn-explore {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
             color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
             font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s;
+            text-decoration: none;
             display: inline-block;
-            width: 100%;
-            text-align: center;
-            margin-top: 15px;
         }
 
-        .btn-view-package:hover {
-            background: #2E5266;
+        .btn-explore:hover {
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
             color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
             text-decoration: none;
-            transform: translateY(-2px);
         }
 
         /* Empty State */
@@ -292,109 +374,168 @@
         }
 
         .empty-state i {
-            font-size: 80px;
-            color: #ddd;
+            font-size: 5rem;
+            color: var(--primary-blue);
+            opacity: 0.3;
             margin-bottom: 20px;
         }
 
         .empty-state h3 {
-            color: #666;
+            color: var(--dark-text);
             margin-bottom: 15px;
         }
 
         .empty-state p {
-            color: #999;
+            color: #666;
+            font-size: 1.1rem;
         }
 
         /* Loading State */
-        .loading-packages {
+        .loading-state {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
-        .loading-packages i {
-            font-size: 48px;
-            color: #1A374D;
-            animation: spin 1s linear infinite;
+        .loading-state i {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Results Count */
-        .results-info {
-            padding: 20px 0;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .results-info strong {
-            color: #333;
+        /* Category Badges */
+        .category-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(43, 123, 184, 0.95);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 10;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .packages-hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .package-image {
-                height: 200px;
+            .package-title {
+                font-size: 1.3rem;
+                min-height: auto;
             }
 
-            .btn-reset {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 100%;
+            .price-amount {
+                font-size: 1.5rem;
             }
 
-            .btn-filter {
-                width: 100%;
+            .filters-section {
+                position: relative;
+                top: 0;
             }
+
+            .filter-group {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--orange);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background: var(--yellow);
+            color: white;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            padding: 60px 0;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form .form-control {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+        }
+
+        .newsletter-form .btn {
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 0 25px 25px 0;
+            font-weight: 600;
+        }
+
+        .newsletter-form .btn:hover {
+            background: linear-gradient(135deg, var(--yellow), var(--orange));
         }
     </style>
 </head>
 <body>
 
-    <!-- Header/Navigation (reuse from your existing pages) -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <strong>Njeyali Travel</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Services</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="packages.html">Packages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong style="font-size: 1.5rem;">Njeyali Travel</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="packages-hero">
-        <div class="container">
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1>Explore Our Travel Packages</h1>
-                    <p>Curated experiences for unforgettable journeys</p>
+                    <h1>Discover Amazing Holiday Packages</h1>
+                    <p class="lead" style="font-size: 1.3rem; margin-bottom: 0;">Curated travel experiences for every budget and destination</p>
                 </div>
             </div>
         </div>
@@ -405,45 +546,51 @@
         <div class="container">
             <form id="filterForm">
                 <div class="row align-items-end">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-6">
                         <div class="filter-group">
                             <label for="categoryFilter">Category</label>
-                            <select id="categoryFilter" name="category">
+                            <select class="form-control" id="categoryFilter">
                                 <option value="">All Categories</option>
-                                <option value="luxury">Luxury</option>
                                 <option value="adventure">Adventure</option>
+                                <option value="beach">Beach & Island</option>
+                                <option value="city">City Break</option>
+                                <option value="cruise">Cruise</option>
                                 <option value="cultural">Cultural</option>
-                                <option value="beach">Beach</option>
+                                <option value="family">Family</option>
+                                <option value="honeymoon">Honeymoon</option>
+                                <option value="luxury">Luxury</option>
                                 <option value="safari">Safari</option>
-                                <option value="city-break">City Break</option>
+                                <option value="wellness">Wellness</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-6">
                         <div class="filter-group">
                             <label for="destinationFilter">Destination</label>
-                            <input type="text" id="destinationFilter" name="destination" placeholder="e.g., Dubai, South Africa">
+                            <select class="form-control" id="destinationFilter">
+                                <option value="">All Destinations</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-6">
                         <div class="filter-group">
-                            <label for="minPrice">Min Price ($)</label>
-                            <input type="number" id="minPrice" name="minPrice" placeholder="0">
+                            <label for="minPrice">Min Price (₦)</label>
+                            <input type="number" class="form-control" id="minPrice" placeholder="0" min="0" step="10000">
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-6">
                         <div class="filter-group">
-                            <label for="maxPrice">Max Price ($)</label>
-                            <input type="number" id="maxPrice" name="maxPrice" placeholder="10000">
+                            <label for="maxPrice">Max Price (₦)</label>
+                            <input type="number" class="form-control" id="maxPrice" placeholder="10,000,000" min="0" step="10000">
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="filter-group">
-                            <button type="submit" class="btn-filter">
-                                <i class="fas fa-search"></i> Filter
+                    <div class="col-md-2 col-sm-12">
+                        <div class="filter-group d-flex gap-2" style="gap: 10px;">
+                            <button type="submit" class="btn btn-filter flex-grow-1">
+                                <i class="fas fa-filter"></i> Filter
                             </button>
-                            <button type="button" class="btn-reset" onclick="resetFilters()">
-                                <i class="fas fa-redo"></i> Reset
+                            <button type="button" class="btn btn-reset" onclick="resetFilters()">
+                                <i class="fas fa-redo"></i>
                             </button>
                         </div>
                     </div>
@@ -452,32 +599,46 @@
         </div>
     </section>
 
-    <!-- Results Info -->
-    <section class="results-info">
+    <!-- Packages Section -->
+    <section class="packages-section">
         <div class="container">
-            <div id="resultsCount"></div>
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Holiday Packages</h2>
+                <p class="results-count" id="resultsCount">Loading packages...</p>
+            </div>
+
+            <!-- Packages Grid -->
+            <div id="packagesContainer" class="row">
+                <!-- Loading State -->
+                <div class="col-12">
+                    <div class="loading-state">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p class="text-muted">Loading amazing packages...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Packages Grid -->
-    <section class="packages-grid">
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
         <div class="container">
-            <!-- Loading State -->
-            <div id="loadingState" class="loading-packages">
-                <i class="fas fa-circle-notch fa-spin"></i>
-                <p>Loading amazing packages...</p>
-            </div>
-
-            <!-- Packages Container -->
-            <div id="packagesContainer" class="row" style="display: none;">
-                <!-- Packages will be inserted here by JavaScript -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <i class="fas fa-suitcase-rolling"></i>
-                <h3>No packages found</h3>
-                <p>Try adjusting your filters or check back later for new packages.</p>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 style="font-weight: 700; margin-bottom: 15px;">Subscribe to Our Newsletter</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.95;">Get exclusive deals and travel inspiration delivered to your inbox</p>
+                    
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email address" required>
+                            <div class="input-group-append">
+                                <button class="btn" type="submit">
+                                    <i class="fas fa-paper-plane"></i> Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -487,52 +648,275 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer (reuse from your existing pages) -->
-    <footer class="bg-dark text-white py-5">
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, var(--primary-blue), #1A5A8A); color: white; padding: 50px 0 20px;">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>Njeyali Travel</h5>
-                    <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences.</p>
+                <div class="col-md-4 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Njeyali Travel</h5>
+                    <p>Your trusted partner for visa assistance, travel planning, and unforgettable experiences around the world.</p>
+                    <div class="mt-3">
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
+                <div class="col-md-4 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white">Home</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="packages.html" class="text-white">Packages</a></li>
-                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                        <li class="mb-2"><a href="index.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li class="mb-2"><a href="services.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Services</a></li>
+                        <li class="mb-2"><a href="packages.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Packages</a></li>
+                        <li class="mb-2"><a href="contact.html" style="color: rgba(255,255,255,0.8);"><i class="fas fa-angle-right"></i> Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <p><i class="fas fa-envelope"></i> info@njeyalitravel.com</p>
-                    <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
-                    <div class="social-links">
-                        <a href="#" class="text-white mr-3"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                <div class="col-md-4 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 20px;">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-envelope"></i> info@njeyalitravel.com</li>
+                        <li class="mb-2"><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                    <div class="mt-3">
+                        <h6>Business Hours</h6>
+                        <p class="mb-0">Monday - Friday: 9AM - 6PM</p>
+                        <p>Saturday: 10AM - 4PM</p>
                     </div>
                 </div>
             </div>
-            <hr class="bg-white">
-            <div class="text-center">
-                <p>&copy; 2025 Njeyali Travel. All rights reserved.</p>
+            <hr style="background: rgba(255,255,255,0.2); margin: 30px 0;">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Njeyali Travel. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- jQuery -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Njeyali API -->
     <script src="js/njeyali-api.js"></script>
 
-    <!-- Packages Page Script -->
-    <script src="js/packages.js"></script>
+    <script>
+        let allPackages = [];
+        let destinations = new Set();
+
+        // Load packages on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPackages();
+        });
+
+        // Load all packages
+        async function loadPackages() {
+            try {
+                const packages = await NjeyaliAPI.packages.getAllPackages();
+                
+                if (packages && packages.length > 0) {
+                    allPackages = packages;
+                    
+                    // Extract unique destinations
+                    packages.forEach(pkg => {
+                        if (pkg.destination) {
+                            destinations.add(pkg.destination);
+                        }
+                    });
+                    
+                    // Populate destination filter
+                    const destinationFilter = document.getElementById('destinationFilter');
+                    Array.from(destinations).sort().forEach(dest => {
+                        const option = document.createElement('option');
+                        option.value = dest;
+                        option.textContent = dest;
+                        destinationFilter.appendChild(option);
+                    });
+                    
+                    displayPackages(packages);
+                } else {
+                    showEmptyState();
+                }
+            } catch (error) {
+                console.error('Error loading packages:', error);
+                showErrorState();
+            }
+        }
+
+        // Display packages
+        function displayPackages(packages) {
+            const container = document.getElementById('packagesContainer');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            if (packages.length === 0) {
+                showEmptyState();
+                return;
+            }
+            
+            resultsCount.textContent = `Showing ${packages.length} package${packages.length !== 1 ? 's' : ''}`;
+            
+            container.innerHTML = packages.map(pkg => `
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="${pkg.image || 'https://via.placeholder.com/600x400?text=' + encodeURIComponent(pkg.name)}" alt="${pkg.name}">
+                            ${pkg.featured ? '<span class="featured-badge">Featured</span>' : ''}
+                            <span class="category-badge">${pkg.category || 'Package'}</span>
+                            <div class="wishlist-btn" onclick="toggleWishlist(event, '${pkg._id}')">
+                                <i class="far fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">${pkg.name}</h3>
+                            <div class="package-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${pkg.destination}</span>
+                            </div>
+                            <div class="package-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>${pkg.duration} days</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>${pkg.groupSize || 'Any'} people</span>
+                                </div>
+                                ${pkg.difficulty ? `
+                                <div class="meta-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>${pkg.difficulty}</span>
+                                </div>
+                                ` : ''}
+                            </div>
+                            ${pkg.highlights && pkg.highlights.length > 0 ? `
+                            <div class="package-highlights">
+                                ${pkg.highlights.slice(0, 3).map(h => `<span class="highlight-tag">${h}</span>`).join('')}
+                            </div>
+                            ` : ''}
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">Starting from</span>
+                                    <div>
+                                        <span class="price-amount">₦${formatPrice(pkg.price)}</span>
+                                        <span class="price-person">/person</span>
+                                    </div>
+                                </div>
+                                <a href="package-detail.html?id=${pkg._id}" class="btn-explore">
+                                    Explore <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Format price
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Filter form submission
+        document.getElementById('filterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            filterPackages();
+        });
+
+        // Filter packages
+        function filterPackages() {
+            const category = document.getElementById('categoryFilter').value.toLowerCase();
+            const destination = document.getElementById('destinationFilter').value;
+            const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+            
+            const filtered = allPackages.filter(pkg => {
+                const matchesCategory = !category || (pkg.category && pkg.category.toLowerCase() === category);
+                const matchesDestination = !destination || pkg.destination === destination;
+                const matchesPrice = pkg.price >= minPrice && pkg.price <= maxPrice;
+                
+                return matchesCategory && matchesDestination && matchesPrice;
+            });
+            
+            displayPackages(filtered);
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('filterForm').reset();
+            displayPackages(allPackages);
+        }
+
+        // Toggle wishlist
+        function toggleWishlist(event, packageId) {
+            event.stopPropagation();
+            const btn = event.currentTarget;
+            const icon = btn.querySelector('i');
+            
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                btn.style.background = 'var(--orange)';
+                btn.style.color = 'white';
+                NjeyaliAPI.utils.showToast('Added to wishlist!', 'success');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                btn.style.background = 'white';
+                btn.style.color = '';
+                NjeyaliAPI.utils.showToast('Removed from wishlist', 'info');
+            }
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            const container = document.getElementById('packagesContainer');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            resultsCount.textContent = 'No packages found';
+            
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="empty-state">
+                        <i class="fas fa-suitcase"></i>
+                        <h3>No packages found</h3>
+                        <p>Try adjusting your filters or browse all packages</p>
+                        <button class="btn btn-filter mt-3" onclick="resetFilters()">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show error state
+        function showErrorState() {
+            const container = document.getElementById('packagesContainer');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            resultsCount.textContent = 'Error loading packages';
+            
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle" style="color: #dc3545;"></i>
+                        <h3>Oops! Something went wrong</h3>
+                        <p>We couldn't load the packages. Please try again later.</p>
+                        <button class="btn btn-filter mt-3" onclick="loadPackages()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            NjeyaliAPI.utils.showToast('Thank you for subscribing!', 'success');
+            this.reset();
+        });
+    </script>
 
 </body>
 </html>
