@@ -1,20 +1,63 @@
 {
   "name": "njeyali-travel-api",
-  "version": "2.0.0",
-  "description": "Enterprise-grade API for Njeyali Travel Agency",
-  "main": "server.js",
+  "version": "3.0.0",
+  "description": "Enterprise-grade API for Njeyali Travel Agency - Enhanced Edition",
+  "main": "server-enhanced.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "cluster": "NODE_ENV=production ENABLE_CLUSTERING=true node server.js",
-    "pm2": "pm2 start ecosystem.config.js",
+    "start": "node server-enhanced.js",
+    "dev": "nodemon server-enhanced.js",
+    "cluster": "NODE_ENV=production ENABLE_CLUSTERING=true node server-enhanced.js",
+    "pm2:start": "pm2 start server-enhanced.js --name njeyali-api -i max",
+    "pm2:stop": "pm2 stop njeyali-api",
+    "pm2:restart": "pm2 restart njeyali-api",
+    "pm2:logs": "pm2 logs njeyali-api",
+    "pm2:monit": "pm2 monit",
     "seed": "node scripts/seedDatabase.js",
-    "test": "jest --coverage",
+    "seed:demo": "node scripts/seedDemoData.js",
+    "test": "jest --coverage --detectOpenHandles",
     "test:watch": "jest --watch",
-    "lint": "eslint .",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:unit": "jest --testPathPattern=unit",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "validate": "npm run lint && npm test",
+    "backup:db": "node scripts/backupDatabase.js",
+    "restore:db": "node scripts/restoreDatabase.js",
+    "migrate": "node scripts/migrate.js",
     "docker:build": "docker-compose build",
     "docker:up": "docker-compose up -d",
-    "docker:logs": "docker-compose logs -f"
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docs:generate": "apidoc -i routes/ -o docs/",
+    "security:audit": "npm audit",
+    "security:fix": "npm audit fix",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "travel",
+    "visa",
+    "booking",
+    "api",
+    "enterprise",
+    "payments",
+    "stripe",
+    "paystack",
+    "mongodb",
+    "express"
+  ],
+  "author": "Njeyali Travel <info@njeyalitravel.com>",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/njeyali/travel-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/njeyali/travel-api/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -27,8 +70,6 @@
     "dotenv": "^16.3.1",
     "winston": "^3.11.0",
     "morgan": "^1.10.0",
-    "ioredis": "^5.3.2",
-    "bull": "^4.12.0",
     "joi": "^17.11.0",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
@@ -38,27 +79,66 @@
     "axios": "^1.6.2",
     "uuid": "^9.0.1",
     "moment": "^2.29.4",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "stripe": "^14.7.0",
+    "ioredis": "^5.3.2",
+    "bull": "^4.12.0",
+    "csv-writer": "^1.6.0",
+    "exceljs": "^4.4.0",
+    "pdf-lib": "^1.17.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",
     "jest": "^29.7.0",
     "supertest": "^6.3.3",
     "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "@sentry/node": "^7.85.0",
-    "artillery": "^2.0.3"
+    "artillery": "^2.0.3",
+    "apidoc": "^1.2.0",
+    "mongodb-memory-server": "^9.1.1"
   },
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tests/"
+    ],
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/tests/**"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "verbose": true
   },
-  "keywords": [
-    "travel",
-    "visa",
-    "booking",
-    "api",
-    "enterprise"
-  ],
-  "author": "Njeyali Travel",
-  "license": "PROPRIETARY"
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "tests/*",
+      "logs/*",
+      "uploads/*"
+    ],
+    "delay": "1000"
+  }
 }
