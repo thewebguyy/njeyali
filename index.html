@@ -159,6 +159,24 @@
             font-weight: 600;
         }
 
+        /* Destination Cards Hover */
+        .destination-card {
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25) !important;
+        }
+
+        .destination-card img {
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+
         /* Visa Checker with Travel Background */
         .visa-checker-section {
             background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E1 100%), 
@@ -188,24 +206,7 @@
         /* About Section with Travel Images */
         .about-section {
             padding: 80px 0;
-            background: white url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2000') center/cover;
-            background-attachment: fixed;
-            position: relative;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .about-section .container {
-            position: relative;
-            z-index: 1;
+            background: white;
         }
 
         /* Stats with Travel Icons */
@@ -245,24 +246,7 @@
         /* Services with Travel Imagery */
         .services-section {
             padding: 80px 0;
-            background: var(--light-bg) url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=2000') center/cover;
-            background-attachment: fixed;
-            position: relative;
-        }
-
-        .services-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(248, 249, 250, 0.97);
-        }
-
-        .services-section .container {
-            position: relative;
-            z-index: 1;
+            background: var(--light-bg);
         }
 
         .service-card {
@@ -322,24 +306,7 @@
         /* Packages with Travel Images */
         .packages-section {
             padding: 80px 0;
-            background: white url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000') center/cover;
-            background-attachment: fixed;
-            position: relative;
-        }
-
-        .packages-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.96);
-        }
-
-        .packages-section .container {
-            position: relative;
-            z-index: 1;
+            background: white;
         }
 
         .package-badge {
@@ -371,24 +338,7 @@
         /* Testimonials with Travel Theme */
         .testimonials-section {
             padding: 80px 0;
-            background: var(--light-bg) url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000') center/cover;
-            background-attachment: fixed;
-            position: relative;
-        }
-
-        .testimonials-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(248, 249, 250, 0.95);
-        }
-
-        .testimonials-section .container {
-            position: relative;
-            z-index: 1;
+            background: var(--light-bg);
         }
 
         .author-avatar {
@@ -469,6 +419,26 @@
             box-shadow: 0 0 0 0.2rem rgba(43, 123, 184, 0.25);
         }
 
+        /* Travel Experience Banner */
+        .travel-experience-banner {
+            background: linear-gradient(135deg, rgba(43, 123, 184, 0.95) 0%, rgba(255, 165, 0, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000') center/cover;
+            background-attachment: fixed;
+            padding: 80px 0;
+            color: white;
+            margin: 80px 0;
+        }
+
+        /* Destination Cards Hover Effects */
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-section h1 {
@@ -530,6 +500,79 @@
         </div>
     </section>
 
+    <!-- Destinations Gallery Preview -->
+    <section class="destinations-gallery-section" style="padding: 80px 0; background: white;">
+        <div class="container">
+            <h2 class="section-title">Explore Dream Destinations</h2>
+            <p class="section-subtitle">Discover the world's most beautiful places with Njeyali Travel</p>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000" alt="Dubai" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Dubai, UAE</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Luxury, Desert & Skyscrapers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000" alt="Paris" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Paris, France</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Romance, Art & Culture</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000" alt="Switzerland" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Swiss Alps</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Mountains, Snow & Adventure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1000" alt="Maldives" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Maldives</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Beach Paradise & Luxury Resorts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?q=80&w=1000" alt="London" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">London, UK</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">History, Royalty & Modern Life</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1000" alt="Rome" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px; color: white;">
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Rome, Italy</h4>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Ancient Wonders & Italian Cuisine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="packages.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-globe"></i> View All Destinations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Visa Checker Section -->
     <section id="visa-checker" class="visa-checker-section">
         <div class="container">
@@ -572,6 +615,98 @@
         </div>
     </section>
 
+    <!-- Travel Experience Banner -->
+    <section class="travel-experience-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=1000" alt="Travel Experience" style="width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
+                </div>
+                <div class="col-md-6">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Why Travel With Us?</h2>
+                    <ul style="font-size: 1.2rem; line-height: 2.2;">
+                        <li><i class="fas fa-check-circle" style="color: #FFD700; margin-right: 10px;"></i> <strong>Expert Visa Guidance</strong> - 98% success rate</li>
+                        <li><i class="fas fa-check-circle" style="color: #FFD700; margin-right: 10px;"></i> <strong>Best Price Guarantee</strong> - Competitive rates always</li>
+                        <li><i class="fas fa-check-circle" style="color: #FFD700; margin-right: 10px;"></i> <strong>24/7 Support</strong> - We're here whenever you need us</li>
+                        <li><i class="fas fa-check-circle" style="color: #FFD700; margin-right: 10px;"></i> <strong>Personalized Service</strong> - Tailored to your needs</li>
+                        <li><i class="fas fa-check-circle" style="color: #FFD700; margin-right: 10px;"></i> <strong>Trusted Partner</strong> - 500+ happy travelers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations Gallery -->
+    <section class="destinations-gallery-section" style="padding: 80px 0; background: white;">
+        <div class="container">
+            <h2 class="section-title">Explore Popular Destinations</h2>
+            <p class="section-subtitle">Discover the world's most breathtaking locations</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000" alt="Dubai skyline" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">Dubai, UAE</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Experience luxury and innovation in the desert</p>
+                            <a href="packages.html?destination=dubai" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000" alt="Paris Eiffel Tower" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">Paris, France</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Romance and culture in the City of Light</p>
+                            <a href="packages.html?destination=paris" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000" alt="Swiss Alps mountains" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">Swiss Alps</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Breathtaking mountain adventures await</p>
+                            <a href="packages.html?destination=switzerland" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1000" alt="Maldives beach resort" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">Maldives</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Paradise islands and crystal-clear waters</p>
+                            <a href="packages.html?destination=maldives" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?q=80&w=1000" alt="London Big Ben" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">London, UK</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Historic charm meets modern elegance</p>
+                            <a href="packages.html?destination=london" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="destination-card" style="position: relative; border-radius: 20px; overflow: hidden; height: 350px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1000" alt="Rome Colosseum" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;">
+                        <div class="destination-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;">
+                            <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px; font-weight: 700;">Rome, Italy</h3>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 15px;">Step into ancient history and culture</p>
+                            <a href="packages.html?destination=rome" class="btn btn-light btn-sm" style="align-self: flex-start; border-radius: 20px; font-weight: 600;">Explore Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about-section">
         <div class="container">
@@ -579,15 +714,15 @@
             <p class="section-subtitle">Your trusted partner for seamless travel experiences</p>
             
             <div class="row mb-5">
+                <div class="col-md-6 mb-4">
+                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=1000" alt="Travel Planning" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
                 <div class="col-md-6">
                     <div class="about-content" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
                         <p>At <strong>Njeyali Travel</strong>, we specialize in making your travel dreams a reality. From complex visa applications to curated travel packages, we handle every detail so you can focus on creating unforgettable memories.</p>
                         <p>With years of experience in the travel industry, our team of experts provides personalized service, ensuring your journey is smooth from start to finish.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="about-content" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-                        <h4 class="mb-3" style="color: var(--primary-blue);"><i class="fas fa-check-circle" style="color: var(--orange);"></i> What We Offer:</h4>
+                        
+                        <h4 class="mb-3 mt-4" style="color: var(--primary-blue);"><i class="fas fa-check-circle" style="color: var(--orange);"></i> What We Offer:</h4>
                         <ul style="line-height: 2;">
                             <li><strong>Visa Assistance</strong> - Expert guidance for all visa types</li>
                             <li><strong>Travel Packages</strong> - Curated experiences worldwide</li>
@@ -793,6 +928,59 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Experience Banner -->
+    <section class="travel-experience-banner" style="padding: 100px 0; background: linear-gradient(135deg, rgba(43, 123, 184, 0.92) 0%, rgba(255, 165, 0, 0.92) 100%), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=2000') center/cover; background-attachment: fixed; color: white; position: relative;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 25px;">Experience the World with Confidence</h2>
+                    <div class="experience-benefits" style="font-size: 1.1rem; line-height: 2;">
+                        <div class="benefit-item" style="margin-bottom: 20px; display: flex; align-items: start; gap: 15px;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem; color: #FFD700; margin-top: 5px;"></i>
+                            <div>
+                                <strong>Expert Visa Guidance:</strong> Navigate complex visa requirements with our experienced team
+                            </div>
+                        </div>
+                        <div class="benefit-item" style="margin-bottom: 20px; display: flex; align-items: start; gap: 15px;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem; color: #FFD700; margin-top: 5px;"></i>
+                            <div>
+                                <strong>Best Travel Deals:</strong> Access exclusive rates on flights, hotels, and packages
+                            </div>
+                        </div>
+                        <div class="benefit-item" style="margin-bottom: 20px; display: flex; align-items: start; gap: 15px;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem; color: #FFD700; margin-top: 5px;"></i>
+                            <div>
+                                <strong>24/7 Support:</strong> We're here for you before, during, and after your journey
+                            </div>
+                        </div>
+                        <div class="benefit-item" style="margin-bottom: 20px; display: flex; align-items: start; gap: 15px;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem; color: #FFD700; margin-top: 5px;"></i>
+                            <div>
+                                <strong>Personalized Service:</strong> Every trip is tailored to your unique preferences
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=800" alt="Travel planning" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        </div>
+                        <div class="col-6" style="padding-top: 30px;">
+                            <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800" alt="Adventure travel" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        </div>
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800" alt="Beach destinations" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        </div>
+                        <div class="col-6" style="padding-top: 30px;">
+                            <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=800" alt="Cultural experiences" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                         </div>
                     </div>
                 </div>
@@ -1092,7 +1280,6 @@
             if (typeof NjeyaliAPI !== 'undefined' && NjeyaliAPI.visa && NjeyaliAPI.visa.getCountries) {
                 NjeyaliAPI.visa.getCountries().then(countries => {
                     if (countries && countries.length > 0) {
-                        // API countries available - could merge or replace
                         console.log('API countries loaded:', countries.length);
                     }
                 }).catch(error => {
